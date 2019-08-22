@@ -5,7 +5,7 @@ The Conversational Agent Research Toolkit (CART) is aimed at enabling researcher
 
 ## Requirements
 
-CART is written in Python 3.6, and needs run in a server able to execute Python code (serving a Flask application with an https certificate) and host a MySQL database. The documentation [LINK TO DOCUMENTATION AT READTHEDOCS] demonstrates how to use Heroku (for the web server) and a database service (e.g., AWS RDS).
+CART is written in Python 3.6, and needs run in a server able to execute Python code (serving a Flask application with an https certificate) and host a MySQL database. The [documentation](https://cart.readthedocs.io/en/latest/) demonstrates how to use Heroku (for the web server) and a database service (e.g., AWS RDS).
 
 CART requires also access to two (free) API services:
 * [DialogFlow](https://dialogflow.com), for dialogue management
@@ -14,4 +14,4 @@ CART requires also access to two (free) API services:
 
 ## Installing and Using CART
 
-Documentation on how to install and use CART is available here: [LINK TO DOCUMENTATION AT READTHEDOCS]
+Documentation on how to install and use CART is available here: https://cart.readthedocs.io/en/latest/
