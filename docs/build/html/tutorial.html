@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; CART - Conversational Agent Research Toolkit 1.00 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Modules" href="modules.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CART - Conversational Agent Research Toolkit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About CART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using CART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurations-in-the-dialogue-management-tool">Configurations in the dialogue management tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurations-in-cart">Configurations in CART:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CART - Conversational Agent Research Toolkit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to create an agent for an experiment as discussed in [REFERENCE TO CCR PAPER].</p>
+<p>Agent specifications:</p>
+<ul class="simple">
+<li>The agent is embedded in a survey flow, and is presented during the survey</li>
+<li>The agent validates a participant id (to start the conversation) and provides a conversation code (at the end of the conversation)</li>
+<li>The agent automatically assigns users to conditions - humanlike or machine - and interacts different with each participant depending on the condition</li>
+<li>A sentiment analysis tool (Vader) is applied to each utterance by the participant, and the results are stored in the logs table in the database</li>
+</ul>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The basic steps to set up an agent are explained in <a class="reference internal" href="installation.html#installation-setup-guide"><span class="std std-ref">Installation and Setup Guide</span></a>. After the basic setup is done, the agent should be up and running - i.e., providing responses - even if irrelevant - to inputs provided by the participant through the web chat (or other channels).</p>
+<p>With the agent running, the researcher can then customize the agent for an experiment, as outlined in the following sections.</p>
+</div>
+<div class="section" id="configurations-in-the-dialogue-management-tool">
+<h2>Configurations in the dialogue management tool<a class="headerlink" href="#configurations-in-the-dialogue-management-tool" title="Permalink to this headline">¶</a></h2>
+<p>Four intents are created in DialogFlow:</p>
+<ul class="simple">
+<li><em>Welcome</em>: starts when the participant greets the agent, asks for the participant id, and - if the participant id is valid - ends with a token (<code class="docutils literal"><span class="pre">[PARTICIPANTID_VALID]</span></code>) for CART to know that the next intent (<em>Experiment</em>) needs to be connected</li>
+<li><em>Experiment</em>: starts when CART has received a token indicating that the participant id is valid (<code class="docutils literal"><span class="pre">[PARTICIPANTID_VALID]</span></code>) and has sent a start token (<code class="docutils literal"><span class="pre">[START_EXPERIMENT]</span></code>) to DialogFlow. It ends when all the questions in the experimental setup are asked to the participant, providing a conversation code and telling the participant to continue with the survey.</li>
+<li><em>Invalid participant id</em>: intent that is triggered by CART when the participant id provided by the participant in the <em>Welcome</em> intent is not valid.</li>
+<li><em>Validate participant id</em>: fallback intent, which provides instructions for the participant should she want to try to start over (and provide a new participant id).</li>
+</ul>
+<p>A copy of the agent, including the full dialogue, is available in the folder [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]</p>
+</div>
+<div class="section" id="configurations-in-cart">
+<h2>Configurations in CART:<a class="headerlink" href="#configurations-in-cart" title="Permalink to this headline">¶</a></h2>
+<p>The full <code class="docutils literal"><span class="pre">config.yaml</span></code> file (without the authentication credentials for the API services, which need to be filled out by each researcher) is also available at [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]. The key configurations look as follows:</p>
+<p>In the <code class="docutils literal"><span class="pre">other</span></code> section, the conversationcode_suffix and the conversationcode_base are added to ensure that participants receive a conversation code at the end of the conversation, and that it always starts with a B, and counting from number 1500 (to prevent low numbers)::</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">other</span><span class="p">:</span>
+    <span class="n">conversationcode_suffix</span><span class="p">:</span> <span class="n">B</span>
+    <span class="n">conversationcode_base</span><span class="p">:</span> <span class="mi">1500</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">experimental_design</span></code> section indicates that CART will assign participants to conditions using the <code class="docutils literal"><span class="pre">random_balanced</span></code> option, and that there will be two conditions, one fr machine, and another for the humanlike agent.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">experimental_design</span><span class="p">:</span>
+    <span class="n">assignment_manager</span><span class="p">:</span> <span class="n">CART</span>
+    <span class="n">assignment_method</span><span class="p">:</span> <span class="n">random_balanced</span>
+    <span class="n">conditions</span><span class="p">:</span>
+        <span class="n">condition_1</span><span class="p">:</span>
+            <span class="n">condition_name</span><span class="p">:</span> <span class="n">machine</span>
+        <span class="n">condition_2</span><span class="p">:</span>
+            <span class="n">condition_name</span><span class="p">:</span> <span class="n">humanlike</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">rephrases</span></code> section has the specific text that varies per condition. The tokens (e.g., AGENTNAME) are included as placeholders in the DialogFlow configurations, so that CART can substitute them depending on the condition the participant is in.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>rephrases:
+    condition_1:
+        AGENTNAME: NutriBot
+        ACKNOWLEDGEMENT1: OK. The system needs some information about you before it can make a recommendation.
+        ACKNOWLEDGEMENT2: OK.
+        ACKNOWLEDGEMENT3: OK, and
+        RECOMMENDATION: OK. Based on the your answers, the recommended breakfast is
+        CLOSURESTART: Thank you.
+        CLOSUREEND: Conversation ended.
+    condition_2:
+        AGENTNAME: Ben
+        ACKNOWLEDGEMENT1: Great! Let&#39;s get started then. I need to know a bit more about you before I can make a suggestion.
+        ACKNOWLEDGEMENT2: Gotcha!
+        ACKNOWLEDGEMENT3: Cool! And, just between the two of us
+        RECOMMENDATION: Thanks! Hey... so here&#39;s an idea for your breakfast...
+        CLOSURESTART: OK! Thanks a million for chatting with me!
+        CLOSUREEND: Have a great day!
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">connect_intents</span></code> section is used to make the connection between the <em>Welcome</em> and <em>Experiment</em> intents in DialogFlow when the participant id is considered valid by CART.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">connect_intents</span><span class="p">:</span>
+        <span class="n">PARTICIPANTID_VALID</span><span class="p">:</span> <span class="n">START_EXPERIMENT</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">questionnaire_flow</span></code> section is configured to ensure that it is enabled and specify that the conversation with the agent takes place during the survey. As the <em>Welcome</em> intent asks for the participant id, this section further specifies that the parameter <em>participantid</em> in DialogFlow’s responses should be looked for and parsed to detect participant id’s. Only id’s starting with an A (and ending with a number) are accepted. Two tokens are defined to handle cases when the participant id is valid or invalid.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">questionnaire_flow</span><span class="p">:</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">moment</span><span class="p">:</span> <span class="n">during</span>
+    <span class="n">config_during</span><span class="p">:</span>
+        <span class="n">participantid_dialog_field</span><span class="p">:</span> <span class="n">participantid</span>
+        <span class="n">participantid_not_recognized</span><span class="p">:</span> <span class="n">PARTICIPANTID_INVALID</span>
+        <span class="n">participantid_recognized</span><span class="p">:</span> <span class="n">PARTICIPANTID_VALID</span>
+        <span class="n">participantid_valid_suffixes</span><span class="p">:</span> <span class="n">A</span>
+</pre></div>
+</div>
+<p>Finally, as sentiment analysis will be applied, the <code class="docutils literal"><span class="pre">special_functions</span></code> section is added with the name of the function, where to store the results in the database (and the type of field). As no override is configured, the <code class="docutils literal"><span class="pre">funcion_action</span></code> is set to False.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">special_functions</span><span class="p">:</span>
+    <span class="n">function_1</span><span class="p">:</span>
+        <span class="n">function_name</span><span class="p">:</span> <span class="n">check_sentiment</span>
+        <span class="n">store_output</span><span class="p">:</span> <span class="n">logs</span>
+        <span class="n">store_output_field</span><span class="p">:</span> <span class="n">sentiment</span>
+        <span class="n">store_output_field_type</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="n">function_action</span><span class="p">:</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>For the sentiment analysis to run, two additional files need to be edited. First, the <code class="docutils literal"><span class="pre">requirements.txt</span></code> is edited to include <code class="docutils literal"><span class="pre">vaderSentiment</span></code> as a required Python module to be installed. Second, the <code class="docutils literal"><span class="pre">special_functions.py</span></code> file (inside the helpers folder) is edited to include the function that processes the user_message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## EXAMPLE - SENTIMENT ANALYSIS</span>
+<span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="k">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">check_sentiment</span><span class="p">(</span><span class="n">user_message</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sentiment</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>
+        <span class="n">sentiment</span> <span class="o">=</span> <span class="n">sentiment</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">sentiment</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, (Anonymized)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.00',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

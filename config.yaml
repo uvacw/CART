@@ -1,0 +1,88 @@
+other:
+    app_client_id: <<MICROSOFT BOT FRAMEWORK API CLIENT ID>>
+    app_client_secret: <<MICROSOFT BOT FRAMEWORK API CLIENT PASSWORD>>
+    database_url: <<URL TO THE MYSQL DATABASE>>
+    database_name: <<NAME OF THE DATABASE>>
+    database_username: <<USERNAME TO ACCESS THE MYSQL DATABASE>>
+    database_password: <<PASSWORD TO ACCESS THE MYSQL DATABASE>>
+    dialogflow_access_token: <<DIALOGFLOW CLIENT ACCESS TOKEN>>
+    conversationcode_suffix: <<SUFFIX FOR CONVERSATION CODE>
+    conversationcode_base: <<STARTING NUMBER FOR CONVERSATION CODE>>
+
+
+## NOTE: Code below can be commented/uncommented when used. See documentation.
+
+
+experimental_design:
+    # assignment_manager: CART
+    # assignment_method: <<ASSIGNMENT METHOD: random_balanced | fully_random>>
+    # conditions:
+    #     condition_1:
+    #         condition_name: <<CONDITION NAME>>
+    #     condition_2:
+    #         condition_name: <<CONDITION NAME>>
+
+    assignment_manager: SURVEY
+    assignment_method: participantid
+    conditions:
+        condition_1:
+            condition_name: <<CONDITION NAME>>
+            condition_suffix: <<CONDITION SUFFIX>>
+        condition_2:
+            condition_name: <<CONDITION NAME>>
+            condition_suffix: <<CONDITION SUFFIX>>
+
+
+
+
+rephrases:
+    all_conditions:
+        STANDARDWELCOMEMESSAGE: This is the text that the agent should reply when there is a contact relation update (i.e., agent is added to Skype).
+        PROVIDECONVERSATIONCODE: Good bye! Your conversation code is |CONVERSATIONCODE|. 
+    # condition_1:
+    #     EXAMPLE1: This is the text for condition_1 (control). 
+    # condition_2:
+    #     EXAMPLE1: This is the text for condition_2 (treatment). 
+
+
+# overrides:
+    # override_1:
+    #     override_reason: quit
+    #     override_terms_case_sensitive: False
+    #     override_terms_matching: full_string
+    #     override_terms_in_user_message: bye, good bye, end, quit, stop
+    #     override_response_from_agent: '[PROVIDECONVERSATIONCODE]'
+
+# connect_intents:
+#         PARTICIPANTID_VALID: START_EXPERIMENT
+
+
+questionnaire_flow:
+    enabled: True
+    moment: <<before | during | after >>
+    config_before:
+        rephrase_token: SENDTOSURVEY
+        rephrase_text: <<TEXT FOR SENDING PARTICIPANT TO SURVEY>>
+    config_during:
+        rephrase_start_token: VALIDATEPARTICIPANTID
+        participantid_dialog_field: participantid
+        participantid_not_recognized: PARTICIPANTID_INVALID
+        participantid_valid_suffixes: <<CONDITION SUFFIXES, e,g, CO, TR>>
+        rephrase_end_token: SENDTOSURVEY
+        rephrase_end_text: <<TEXT FOR SENDING PARTICIPANT TO CONTINUE WITH SURVEY>>
+    config_after:
+        rephrase_start_token: VALIDATEPARTICIPANTID
+        participantid_dialog_field: participantid
+        participantid_not_recognized: PARTICIPANTID_INVALID
+        participantid_valid_suffixes: <<CONDITION SUFFIXES, e,g, CO, TR>>
+        
+
+special_functions:
+    function_1:
+        function_name: <<NAME OF THE FUNCTION AT THE special_functions.py FILE>>
+        store_output: logs
+        store_output_field: <<NAME OF THE FIELD IN THE LOGS TABLE WHERE THE OUTPUT OF THE FUNCTION SHOULD BE STORED>>
+        store_output_field_type: <<FIELD TYPE IN THE LOGS TABLE WHERE THE OUTPUT OF THE FUNCTION SHOULD BE STORED, e.g., float, int, text>>
+        function_action: <<True - FUNCTION WILL OVERRIDE DIALOGUE MANAGER DEPENDING ON COMPARISON, False - NO ACTION TAKEN BASED ON FUNCTION OUTPUT >>
+        function_comparison: <<STRING CONTAINING THE COMPARISON BEING DONE WITH THE OUTPUT OF THE FUNCTION SHOULD funcion_action == True>>
+        function_comparison_met: <<NAME OF THE OVERRIDE TO BE APPLIED SHOULD RESULT OF THE function_comparison == True>>    

@@ -1,0 +1,5 @@
+microsoftbotframework
+pymysql
+apiai
+gunicorn
+vaderSentiment

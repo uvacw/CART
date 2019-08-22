@@ -1,0 +1,66 @@
+other:
+    app_client_id: <<MICROSOFT BOT FRAMEWORK API CLIENT ID>>
+    app_client_secret: <<MICROSOFT BOT FRAMEWORK API CLIENT PASSWORD>>
+    database_url: <<URL TO THE MYSQL DATABASE>>
+    database_name: <<NAME OF THE DATABASE>>
+    database_username: <<USERNAME TO ACCESS THE MYSQL DATABASE>>
+    database_password: <<PASSWORD TO ACCESS THE MYSQL DATABASE>>
+    dialogflow_access_token: <<DIALOGFLOW CLIENT ACCESS TOKEN>>
+    conversationcode_suffix: B
+    conversationcode_base: 1500
+
+experimental_design:
+    assignment_manager: CART
+    assignment_method: random_balanced
+    conditions:
+        condition_1:
+            condition_name: machine
+        condition_2:
+            condition_name: humanlike
+
+rephrases:
+    condition_1:
+        AGENTNAME: NutriBot
+        ACKNOWLEDGEMENT1: OK. The system needs some information about you before it can make a recommendation.
+        ACKNOWLEDGEMENT2: OK.
+        ACKNOWLEDGEMENT3: OK, and 
+        RECOMMENDATION: OK. Based on the your answers, the recommended breakfast is
+        CLOSURESTART: Thank you. 
+        CLOSUREEND: Conversation ended.
+    condition_2:
+        AGENTNAME: Ben
+        ACKNOWLEDGEMENT1: Great! Let's get started then. I need to know a bit more about you before I can make a suggestion.
+        ACKNOWLEDGEMENT2: Gotcha!
+        ACKNOWLEDGEMENT3: Cool! And, just between the two of us
+        RECOMMENDATION: Thanks! Hey... so here's an idea for your breakfast...
+        CLOSURESTART: OK! Thanks a million for chatting with me! 
+        CLOSUREEND: Have a great day!
+
+
+connect_intents:
+        PARTICIPANTID_VALID: START_EXPERIMENT
+
+
+questionnaire_flow:
+    enabled: True
+    moment: during
+    config_during:
+        participantid_dialog_field: participantid
+        participantid_not_recognized: PARTICIPANTID_INVALID
+        participantid_recognized: PARTICIPANTID_VALID
+        participantid_valid_suffixes: A
+        
+
+special_functions:
+    function_1:
+        function_name: check_sentiment
+        store_output: logs
+        store_output_field: sentiment
+        store_output_field_type: float
+        function_action: False
+
+
+
+
+
+

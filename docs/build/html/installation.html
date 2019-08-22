@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; CART - Conversational Agent Research Toolkit 1.00 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using CART" href="using.html" />
+    <link rel="prev" title="About CART" href="about.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CART - Conversational Agent Research Toolkit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About CART</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#services-and-apis">Services and APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-packages">Python Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-and-setup-guide">Installation and Setup Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-download-cart-to-your-computer">Step 1. Download CART to your computer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-rename-the-config-yaml-file">Step 2. Rename the config.yaml file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-create-an-agent-in-dialogflow">Step 3. Create an agent in DialogFlow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-create-a-database-for-logging">Step 4. Create a database for logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-publish-the-agent-as-a-web-service">Step 5. Publish the agent as a web service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-connect-the-agent-to-the-ms-bot-framework">Step 6. Connect the agent to the MS Bot Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-customize-the-agent">Step 7. Customize the agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-8-making-the-agent-available">Step 8. Making the agent available</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using CART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CART - Conversational Agent Research Toolkit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="services-and-apis">
+<h3>Services and APIs<a class="headerlink" href="#services-and-apis" title="Permalink to this headline">¶</a></h3>
+<p>CART acts as an integration layer between different services (and APIs), and specific configurations within CART itself. To use it, you will need:</p>
+<ol class="arabic simple">
+<li>Access to a SQL database</li>
+<li>Access to a web service to publish CART (using Python 3.X)</li>
+<li>An account with <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a></li>
+<li>An account with the <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a></li>
+<li>A copy of the CART code</li>
+</ol>
+<p>Optionally, you also would need access to an online questionnaire tool (e.g., Qualtrics, SurveyMonkey) if you are integrating CART into a survey flow.</p>
+<p><strong>Note:</strong> For #1 and #2, you can use your own server (if available), or AWS RDS (database) and Heroku (web service) as demonstrated in the <a class="reference internal" href="#installation-setup-guide"><span class="std std-ref">Installation and Setup Guide</span></a>.</p>
+</div>
+<div class="section" id="python-packages">
+<h3>Python Packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">¶</a></h3>
+<p>CART uses a set of Python packages (e.g., PyMySQL, <a class="reference external" href="https://github.com/mbrown1508/microsoftbotframework">microsoftbotframework</a>, APIai etc.). By downloading CART and running the step-by-step instructions in the installation guide (below), all the necessary packages will be installed on the server.</p>
+</div>
+</div>
+<div class="section" id="installation-and-setup-guide">
+<span id="installation-setup-guide"></span><h2>Installation and Setup Guide<a class="headerlink" href="#installation-and-setup-guide" title="Permalink to this headline">¶</a></h2>
+<p><strong>Important note:</strong> these steps show how to install and setup an agent using <em>AWS RDS</em> (as a database server) and <em>Heroku</em> (as a web service) along with <em>DialogFlow</em> and the <em>MS Bot Framework</em>. Advanced users can replace <em>AWS RDS</em> and <em>Heroku</em> by their own servers.</p>
+<div class="section" id="step-1-download-cart-to-your-computer">
+<h3>Step 1. Download CART to your computer<a class="headerlink" href="#step-1-download-cart-to-your-computer" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Access [ANONYMIZED LINK OF THE GITHUB REPOSITORY] and select <code class="docutils literal"><span class="pre">clone</span> <span class="pre">or</span> <span class="pre">download</span></code> and download CART as a zip file.</li>
+<li>Extract the zip file in a folder you want to store the agent</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="step-2-rename-the-config-yaml-file">
+<h3>Step 2. Rename the config.yaml file<a class="headerlink" href="#step-2-rename-the-config-yaml-file" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">config.yaml</span></code> file, located at the folder <code class="docutils literal"><span class="pre">cart</span></code>, will contain all the basic configurations needed to connect to the services (DialogFlow, MS Bot Framework and the SQL database), including usernames and passwords. <strong>Never make it publicly available</strong>.</p>
+<dl class="docutils">
+<dt>To create it, you need to:</dt>
+<dd><ol class="first last arabic simple">
+<li>Copy (or rename) the file called <code class="docutils literal"><span class="pre">config_example.yaml</span></code> to <code class="docutils literal"><span class="pre">config.yaml</span></code></li>
+<li>In the steps 3, 4 and 6 (below), you will need to update this file with information coming from each service.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="step-3-create-an-agent-in-dialogflow">
+<h3>Step 3. Create an agent in DialogFlow<a class="headerlink" href="#step-3-create-an-agent-in-dialogflow" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Log in to <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a> and select <code class="docutils literal"><span class="pre">Create</span> <span class="pre">Agent</span></code></li>
+<li>In the agent settings (click on the configuration wheel in the left menu, next to the agent name), find the <code class="docutils literal"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code>.</li>
+<li>Copy the <code class="docutils literal"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code> and add it your <code class="docutils literal"><span class="pre">config.yaml</span></code> file (replacing the text <code class="docutils literal"><span class="pre">&lt;&lt;DIALOGFLOW</span> <span class="pre">CLIENT</span> <span class="pre">ACCESS</span> <span class="pre">TOKEN&gt;&gt;</span></code>)</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="step-4-create-a-database-for-logging">
+<h3>Step 4. Create a database for logging<a class="headerlink" href="#step-4-create-a-database-for-logging" title="Permalink to this headline">¶</a></h3>
+<p>CART requires the the URL (host) of a MySQL database, database name, and username and password to connect to and log the conversations between the agent and participants. The username provided needs to have all privileges (including CREATE) in the database. This information needs to be made included in the <code class="docutils literal"><span class="pre">config.yaml</span></code> file.</p>
+<dl class="docutils">
+<dt>If using AWS RDS, the following steps need to be followed:</dt>
+<dd><ol class="first last arabic simple">
+<li>Log into your <a class="reference external" href="https://aws.amazon.com">AWS</a>  account and select RDS</li>
+<li>Create a database using MySQL, and make sure to include the username and the password also in the <code class="docutils literal"><span class="pre">config.yaml</span></code> file</li>
+<li>When asked for the database name, make sure to inform it, and also include it in the <code class="docutils literal"><span class="pre">config.yaml</span></code> file.</li>
+<li>Select the endpoint of the database (check the dabatase details page), and paste it in the <code class="docutils literal"><span class="pre">database_url</span></code> field of <code class="docutils literal"><span class="pre">config.yaml</span></code>.</li>
+<li>After the database is launched, make sure to check the security group (see database details), and open the inbound port to the server that you will be using.</li>
+</ol>
+</dd>
+<dt><em>Notes:</em></dt>
+<dd><ul class="first last simple">
+<li>Usually a micro or small instance in AWS is sufficient for testing purposes, and can later be upgraded to medium/large when the agent is live and handling several conversations at the same time (e.g., during an experiment)</li>
+<li>For security reasons, it is recommended not to allow any IP to connect to your database. When using Heroku, see this list of <a class="reference external" href="https://elements.heroku.com/addons/categories/network">plugins</a> that can create a static IP for your app.</li>
+<li><dl class="first docutils">
+<dt>When running the agent in the server for the first time, it will automatically create two tables in the database:</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">logs</span></code>, which records every interaction between the agent and the participant</li>
+<li><code class="docutils literal"><span class="pre">conversations</span></code>, which records each individual conversation (i.e., in general, each participant = one conversation) that is started with the agent.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="step-5-publish-the-agent-as-a-web-service">
+<h3>Step 5. Publish the agent as a web service<a class="headerlink" href="#step-5-publish-the-agent-as-a-web-service" title="Permalink to this headline">¶</a></h3>
+<p>After completing the steps above, it is time to publish the agent as a web service. This can be done using Heroku (as demonstrated below) or in any other server that supports Python and Flask applications. It is important to note that the server should also be able to serve pages in https.</p>
+<dl class="docutils">
+<dt>If using Heroku:</dt>
+<dd><ol class="first last arabic simple">
+<li>Log into your <a class="reference external" href="https://heroku.com">Heroku</a>  account and create a new app</li>
+<li>Select the deployment method</li>
+<li>Deploy the app</li>
+<li>After the build has been completed, select <code class="docutils literal"><span class="pre">open</span> <span class="pre">app</span></code></li>
+<li>Copy the URL of the app (it should start with the app-name, and end with <code class="docutils literal"><span class="pre">herokuapp.com</span></code>) to use in the next step</li>
+</ol>
+</dd>
+</dl>
+<p><strong>Note:</strong> the URL of the app is needed so it can be registered in the MS Bot Framework (next step). The registration in the MS Bot Framework will also provide authentication credentials. These credentials will need to be added to the <code class="docutils literal"><span class="pre">config.yaml</span></code> file, and the agent will need to be published again in Heroku (as outlined in the next step).</p>
+</div>
+<div class="section" id="step-6-connect-the-agent-to-the-ms-bot-framework">
+<h3>Step 6. Connect the agent to the MS Bot Framework<a class="headerlink" href="#step-6-connect-the-agent-to-the-ms-bot-framework" title="Permalink to this headline">¶</a></h3>
+<p>After a URL for the agent as a web service is available (e.g., for Heroku: <code class="docutils literal"><span class="pre">https://NAMEOFTHEAPP.herokuapp.com/</span></code>), the agent can be registered in the MS Bot Framework. To do so:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Log in your <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a> account, selecting <code class="docutils literal"><span class="pre">My</span> <span class="pre">Bots</span></code></li>
+<li>Select <code class="docutils literal"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">bot</span></code>. You will be redirected to Azure Bot Service</li>
+<li>Select <code class="docutils literal"><span class="pre">Bot</span> <span class="pre">Channels</span> <span class="pre">Registration</span></code></li>
+<li>Provide the information required</li>
+<li>The messaging endpoint will be the URL of the Heroku app + <code class="docutils literal"><span class="pre">api/messages</span></code> - example: <code class="docutils literal"><span class="pre">https://NAMEOFTHEAPP.herokuapp.com//api/messages</span></code></li>
+<li>After the channel registration is deployed, select <code class="docutils literal"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">resource</span></code> (or simply open it in Azure)</li>
+<li>In the <code class="docutils literal"><span class="pre">Settings</span></code>, go to the Microsoft App ID area</li>
+<li>Copy the Microsoft App ID and add it to the <code class="docutils literal"><span class="pre">config.yaml</span></code> file under <code class="docutils literal"><span class="pre">app_client_id</span></code></li>
+<li>Click on <code class="docutils literal"><span class="pre">Manage</span></code> for the Microsoft App ID</li>
+<li>In the new window, select <code class="docutils literal"><span class="pre">Generate</span> <span class="pre">new</span> <span class="pre">password</span></code>. Copy this password and add it to the <code class="docutils literal"><span class="pre">config.yaml</span></code> file under <code class="docutils literal"><span class="pre">app_client_secret</span></code></li>
+<li>Click on <code class="docutils literal"><span class="pre">save</span></code> and close this window</li>
+<li>In the <code class="docutils literal"><span class="pre">config.yaml</span></code> file, add the name of the agent under <code class="docutils literal"><span class="pre">agent_name</span></code></li>
+<li>Go back to Heroku and re-deploy the app (with the latest version of the <code class="docutils literal"><span class="pre">config.yaml</span></code> file).</li>
+<li>After the redeployment, you can use <code class="docutils literal"><span class="pre">Test</span> <span class="pre">in</span> <span class="pre">Web</span> <span class="pre">Chat</span></code> function on Azure Bot Service (same area where the <code class="docutils literal"><span class="pre">Settings</span></code> were) to test the connection.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="step-7-customize-the-agent">
+<h3>Step 7. Customize the agent<a class="headerlink" href="#step-7-customize-the-agent" title="Permalink to this headline">¶</a></h3>
+<p>After the agent is connected to the MS Bot Framework, the basic setup is done. The researcher can then use several features within CART to customize the agent. For more details, see <a class="reference internal" href="using.html#using"><span class="std std-ref">Using CART</span></a></p>
+</div>
+<div class="section" id="step-8-making-the-agent-available">
+<h3>Step 8. Making the agent available<a class="headerlink" href="#step-8-making-the-agent-available" title="Permalink to this headline">¶</a></h3>
+<p>After the agent is ready to interact with users, you can use the <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a> to publish it as a Web Chat (see <code class="docutils literal"><span class="pre">Get</span> <span class="pre">bot</span> <span class="pre">embed</span> <span class="pre">codes</span></code>), or on other channels such as Skype, Facebook Messenger, or Telegram.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="using.html" class="btn btn-neutral float-right" title="Using CART" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="about.html" class="btn btn-neutral" title="About CART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, (Anonymized)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.00',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
