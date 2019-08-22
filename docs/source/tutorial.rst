@@ -34,8 +34,8 @@ Four intents are created in DialogFlow:
 A copy of the agent, including the full dialogue, is available in the folder [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]
 
 
-Configurations in CART:
-^^^^^^^^^^^^^^^^^^^^^^^
+Configurations in CART
+^^^^^^^^^^^^^^^^^^^^^^
 
 The full ``config.yaml`` file (without the authentication credentials for the API services, which need to be filled out by each researcher) is also available at [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]. The key configurations look as follows:
 
