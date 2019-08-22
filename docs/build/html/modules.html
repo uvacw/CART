@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Using CART" href="using.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -88,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using.html">Using CART</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-helpers.check_db">check_db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-db">check_db</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-helpers.log_conversations">log_conversations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-helpers.rephrase">rephrase</a></li>
 </ul>
@@ -162,36 +164,30 @@
   <div class="section" id="modules">
 <span id="id1"></span><h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <p>Note: see the <a class="reference internal" href="using.html#using"><span class="std std-ref">Using CART</span></a> for more information on how to use these functions.</p>
-<div class="section" id="module-helpers.check_db">
-<span id="check-db"></span><h2>check_db<a class="headerlink" href="#module-helpers.check_db" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="helpers.check_db.check_db">
-<code class="descclassname">helpers.check_db.</code><code class="descname">check_db</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#helpers.check_db.check_db" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connects to the databse informed in the configuration file and checks whether all tables are created. If tables are missing, it creates the tables. Does not return any values.</p>
-</dd></dl>
-
+<div class="section" id="check-db">
+<h2>check_db<a class="headerlink" href="#check-db" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-helpers.log_conversations">
 <span id="log-conversations"></span><h2>log_conversations<a class="headerlink" href="#module-helpers.log_conversations" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="helpers.log_conversations.assign_conditions">
 <code class="descclassname">helpers.log_conversations.</code><code class="descname">assign_conditions</code><span class="sig-paren">(</span><em>db</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.log_conversations.assign_conditions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Assigns the condition to a new conversation based on the configurations available at the <code class="docutils literal"><span class="pre">config.yaml</span></code> file (section: experimental_design).</p>
-<p>If the <code class="docutils literal"><span class="pre">assignment_manager</span></code> is set to <code class="docutils literal"><span class="pre">CART</span></code>, it works as follows:</p>
+<dd><p>Assigns the condition to a new conversation based on the configurations available at the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file (section: experimental_design).</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">assignment_manager</span></code> is set to <code class="docutils literal notranslate"><span class="pre">CART</span></code>, it works as follows:</p>
 <ol class="arabic simple">
-<li>It uses the conditions available at the <code class="docutils literal"><span class="pre">config.yaml</span></code> file to determine the conditions for the experiment, and uses the condition_name as the value to be informed.</li>
-<li>It assigns the condition to the new conversation depending on the <code class="docutils literal"><span class="pre">assignment_method</span></code> in the <code class="docutils literal"><span class="pre">config.yaml</span></code> file:</li>
+<li>It uses the conditions available at the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file to determine the conditions for the experiment, and uses the condition_name as the value to be informed.</li>
+<li>It assigns the condition to the new conversation depending on the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code> in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file:</li>
 </ol>
 <ul class="simple">
-<li>If the <code class="docutils literal"><span class="pre">assignment_method</span></code> is set to <code class="docutils literal"><span class="pre">fully_random</span></code>, it will randomly choose among the conditions.</li>
-<li>If the <code class="docutils literal"><span class="pre">assignment_method`</span> <span class="pre">is</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``random_balanced</span></code>, it will return the condition with the lowest count in the database and, if all conditions are equally balanaced, will return a random choice among the conditions.</li>
+<li>If the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code> is set to <code class="docutils literal notranslate"><span class="pre">fully_random</span></code>, it will randomly choose among the conditions.</li>
+<li>If the <code class="docutils literal notranslate"><span class="pre">assignment_method`</span> <span class="pre">is</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``random_balanced</span></code>, it will return the condition with the lowest count in the database and, if all conditions are equally balanaced, will return a random choice among the conditions.</li>
 </ul>
 </dd></dl>
 
 <dl class="function">
 <dt id="helpers.log_conversations.check_participantid">
 <code class="descclassname">helpers.log_conversations.</code><code class="descname">check_participantid</code><span class="sig-paren">(</span><em>resp</em>, <em>status</em>, <em>conditionid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.log_conversations.check_participantid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Module to start the validation of the participant id if the questionnaire_flow == during or after, and if the response by the dialogue manager contains the key parameters, and inside parameters, the key that in <code class="docutils literal"><span class="pre">config.yaml</span></code> was assigned as participantid_dialog_field.</p>
+<dd><p>Module to start the validation of the participant id if the questionnaire_flow == during or after, and if the response by the dialogue manager contains the key parameters, and inside parameters, the key that in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> was assigned as participantid_dialog_field.</p>
 </dd></dl>
 
 <dl class="function">
@@ -202,13 +198,13 @@
 <div><p>If the conversationid is found in the database (table conversations), the function increases the number of turns by 1, and returns the status, conversation_code and the conditionid.</p>
 <p>If the conversationid is not found, it will create a new row in the table conversations, and include:</p>
 <ul class="simple">
-<li>conversation_code: created using the <code class="docutils literal"><span class="pre">conversationcode_suffix</span></code> + the <code class="docutils literal"><span class="pre">conversationcode_base</span></code> (number) from the <code class="docutils literal"><span class="pre">config.yaml</span></code> file, incremented by the number of conversations already in the database.</li>
+<li>conversation_code: created using the <code class="docutils literal notranslate"><span class="pre">conversationcode_suffix</span></code> + the <code class="docutils literal notranslate"><span class="pre">conversationcode_base</span></code> (number) from the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, incremented by the number of conversations already in the database.</li>
 <li>conditionid: created using the assign_conditions function</li>
 <li>status: 0 (for conversation that has started)</li>
 <li>turns: 1</li>
 </ul>
 </div></blockquote>
-<p>The function also calls <code class="docutils literal"><span class="pre">assign_conditions()</span></code> to assign conditions (when CART is set as the assignment manager in <code class="docutils literal"><span class="pre">config.yaml</span></code>), and <code class="docutils literal"><span class="pre">check_participantid()</span></code> to determine if the integration with the survey requires checking the participant id.</p>
+<p>The function also calls <code class="docutils literal notranslate"><span class="pre">assign_conditions()</span></code> to assign conditions (when CART is set as the assignment manager in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>), and <code class="docutils literal notranslate"><span class="pre">check_participantid()</span></code> to determine if the integration with the survey requires checking the participant id.</p>
 </dd></dl>
 
 <dl class="function">
@@ -257,7 +253,7 @@
 <dl class="function">
 <dt id="helpers.log_conversations.validate_participantid">
 <code class="descclassname">helpers.log_conversations.</code><code class="descname">validate_participantid</code><span class="sig-paren">(</span><em>participantid</em>, <em>participantid_valid_suffixes</em>, <em>resp</em>, <em>conditionid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.log_conversations.validate_participantid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Module to validate participantid provided by the dialogue manager. Receives the participantid, the participantid_valid_suffixes (from the <code class="docutils literal"><span class="pre">config.yaml</span></code> file) and returns:</p>
+<dd><p>Module to validate participantid provided by the dialogue manager. Receives the participantid, the participantid_valid_suffixes (from the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file) and returns:</p>
 <ul class="simple">
 <li>The cleaned-up participant id</li>
 <li>If applicable, the conditionid (if assignment_manager is survey)</li>
@@ -272,12 +268,12 @@
 <dt id="helpers.rephrase.check_override">
 <code class="descclassname">helpers.rephrase.</code><code class="descname">check_override</code><span class="sig-paren">(</span><em>user_message</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.rephrase.check_override" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a message by a user requires any type of override - i.e., stopping the message from going to DialogFlow to get a response.</p>
-<p>To do so, it uses the information available in the <code class="docutils literal"><span class="pre">overrides</span></code> section of the <code class="docutils literal"><span class="pre">config.yaml</span></code> file. More specifically, it checks if any of the terms contained in the <code class="docutils literal"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message, with the following rules:</p>
+<p>To do so, it uses the information available in the <code class="docutils literal notranslate"><span class="pre">overrides</span></code> section of the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file. More specifically, it checks if any of the terms contained in the <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message, with the following rules:</p>
 <ul class="simple">
-<li>If <code class="docutils literal"><span class="pre">override_terms_case_sensitive</span></code> is set to <code class="docutils literal"><span class="pre">False</span></code>, it turns the user_message to lower case before continuing. If not, case is preserved.</li>
-<li>If <code class="docutils literal"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal"><span class="pre">full_string</span></code>, it checks the user_message is equal to any of the terms in <code class="docutils literal"><span class="pre">override_terms_in_user_message</span></code>. For example, if the user_message is “apple” and this is one of the terms, then it will meet the condition. If the user_message is “I like apple”, it won’t match.</li>
-<li>If <code class="docutils literal"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal"><span class="pre">string</span></code>, it checks if each of the terms in <code class="docutils literal"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message using string matching. For example, the term “apple” would be found in the messages “I like apple” and “I like pineapples”.</li>
-<li>If <code class="docutils literal"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal"><span class="pre">tokens</span></code>, it first splits the user_message in tokens (removing any punctuation marks or special characters), and then checks if any of the tokens of the user_message is present in the terms from <code class="docutils literal"><span class="pre">override_terms_in_user_message</span></code>. For example, the term “apple” would be found in the messages “I like apple” but not in “I like pineapples”.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_case_sensitive</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, it turns the user_message to lower case before continuing. If not, case is preserved.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">full_string</span></code>, it checks the user_message is equal to any of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, if the user_message is “apple” and this is one of the terms, then it will meet the condition. If the user_message is “I like apple”, it won’t match.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">string</span></code>, it checks if each of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message using string matching. For example, the term “apple” would be found in the messages “I like apple” and “I like pineapples”.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">tokens</span></code>, it first splits the user_message in tokens (removing any punctuation marks or special characters), and then checks if any of the tokens of the user_message is present in the terms from <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, the term “apple” would be found in the messages “I like apple” but not in “I like pineapples”.</li>
 </ul>
 <p>After completing the checks above, if any of the terms is found in the user_message, the function returns a dictionary containing:</p>
 <ul class="simple">
@@ -292,20 +288,20 @@
 <dt id="helpers.rephrase.check_rephrase">
 <code class="descclassname">helpers.rephrase.</code><code class="descname">check_rephrase</code><span class="sig-paren">(</span><em>resp_speech</em>, <em>conversation_code=None</em>, <em>conditionid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#helpers.rephrase.check_rephrase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Receives a potential response by the agent and checks if it needs rephrasing. If required, replaces any text within square brackets by appropriate information depending on conditions specified in this function. Returns the agent response with the information required replace.</p>
-<p>The <code class="docutils literal"><span class="pre">config.yaml</span></code> file manages these replacements (section: <code class="docutils literal"><span class="pre">rephrases</span></code>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file manages these replacements (section: <code class="docutils literal notranslate"><span class="pre">rephrases</span></code>).</p>
 <blockquote>
 <div><p>Some specific operations:</p>
 <ul>
-<li><p class="first">If <code class="docutils literal"><span class="pre">conversation_code</span></code> is provided, the function will also look for the string <code class="docutils literal"><span class="pre">|CONVERSATIONCODE|</span></code> in the response, and substitute it by the value of the conversation_code.</p>
+<li><p class="first">If <code class="docutils literal notranslate"><span class="pre">conversation_code</span></code> is provided, the function will also look for the string <code class="docutils literal notranslate"><span class="pre">|CONVERSATIONCODE|</span></code> in the response, and substitute it by the value of the conversation_code.</p>
 <blockquote>
 <div><ul class="simple">
-<li>This can be helpful for when the agent needs to provide a conversation_code to the user. For example, a message can be configured in the dialogue manager to say “This is your <code class="docutils literal"><span class="pre">|CONVERSATIONCODE|</span></code>”, and the check_rephrase function will automatically replace that piece of the string by the actual conversation code.</li>
+<li>This can be helpful for when the agent needs to provide a conversation_code to the user. For example, a message can be configured in the dialogue manager to say “This is your <code class="docutils literal notranslate"><span class="pre">|CONVERSATIONCODE|</span></code>”, and the check_rephrase function will automatically replace that piece of the string by the actual conversation code.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">If <code class="docutils literal"><span class="pre">conditionid</span></code> is not specified, the function will only look for items to rephrase in the <code class="docutils literal"><span class="pre">all_conditions</span></code> section of the <code class="docutils literal"><span class="pre">config.yaml</span></code> file.</p>
+<li><p class="first">If <code class="docutils literal notranslate"><span class="pre">conditionid</span></code> is not specified, the function will only look for items to rephrase in the <code class="docutils literal notranslate"><span class="pre">all_conditions</span></code> section of the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</p>
 </li>
-<li><p class="first">If a <code class="docutils literal"><span class="pre">conditionid</span></code> is specified, the function will look also for items to rephrase in each of the conditions.</p>
+<li><p class="first">If a <code class="docutils literal notranslate"><span class="pre">conditionid</span></code> is specified, the function will look also for items to rephrase in each of the conditions.</p>
 <blockquote>
 <div><ul class="simple">
 <li>For example, if condition_1 indicates that TEXT1 should be replaced by A, and condition_2 indicates that TEXT1 should be replaced B, the check_rephrase function will provide rephrase the response “This is TEXT1” differently depending on the condition.</li>
@@ -330,7 +326,7 @@
         <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="using.html" class="btn btn-neutral" title="Using CART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="using.html" class="btn btn-neutral float-left" title="Using CART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -339,7 +335,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, (Anonymized)
+        &copy; Copyright 2018, Theo Araujo
 
     </p>
   </div>
@@ -356,35 +352,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'1.00',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
