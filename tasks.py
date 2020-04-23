@@ -43,6 +43,8 @@ def echo_response(message):
                 resp_speech = check_rephrase(resp_speech)
 
                 log_response(db, message, resp_speech, resp_speech)
+                if 'channelData' in message.keys():
+                    del message['channelData']['clientActivityID']
                 ReplyToActivity(fill=message,
                         text=resp_speech).send()
                 return
@@ -122,6 +124,8 @@ def echo_response(message):
 
             resp_speech = check_rephrase(resp_speech, conversation_code = conversation_code, conditionid=conditionid)
             log_response(db, message, resp_speech, resp, participantid=participantid)
+            if 'channelData' in message.keys():
+                del message['channelData']['clientActivityID']            
             ReplyToActivity(fill=message, text=resp_speech).send()
 
 
@@ -140,4 +144,7 @@ def echo_response(message):
             resp_speech = check_rephrase(resp_speech, conversation_code = conversation_code, conditionid=conditionid)
             message['textFormat'] = 'markdown'
             log_response(db, message, resp_speech, resp, participantid=participantid)
+            #override for disappearing messages
+            if 'channelData' in message.keys():
+                del message['channelData']['clientActivityID']
             ReplyToActivity(fill=message, text=resp_speech).send()
