@@ -219,6 +219,7 @@ def assign_conditions(db):
     2. It assigns the condition to the new conversation depending on the ``assignment_method`` in the ``config.yaml`` file:\n
     - If the ``assignment_method`` is set to ``fully_random``, it will randomly choose among the conditions.\n
     - If the ``assignment_method` is set to ``random_balanced``, it will return the condition with the lowest count in the database and, if all conditions are equally balanaced, will return a random choice among the conditions.\n
+    - If the ``assignment_method` is set to ``sequential``, it will return the next condition (as per the order in the config file) compared to the last conversation available in the database.\n
     """
     experimental_design = cfg['experimental_design']
     if experimental_design['assignment_manager'] == 'CART':
@@ -251,6 +252,23 @@ def assign_conditions(db):
             else:
                 least_frequent_condition = Counter(results).most_common()[-1][0]
                 return least_frequent_condition
+
+        if experimental_design['assignment_method'] == 'sequential':
+            sql = 'SELECT conditionid FROM conversations'
+            db.commit()
+            cur = db.query(sql)
+            results = cur.fetchall()
+            if len(results) == 0:
+                return conditions[0]
+
+            results = [item[0] for item in results]
+            last_cond = results[-1]
+
+            total_cond = len(conditions)
+            if conditions.index(last_cond) + 1 == total_cond:
+                return conditions[0]
+            else:
+                return conditions[conditions.index(last_cond) + 1]
 
         else:
             return random.choice(conditions)
