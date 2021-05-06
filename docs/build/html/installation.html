@@ -201,7 +201,7 @@
 </div>
 <div class="section" id="python-packages">
 <h3>Python Packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">¶</a></h3>
-<p>CART uses a set of Python packages (e.g., PyMySQL, <a class="reference external" href="https://github.com/mbrown1508/microsoftbotframework">microsoftbotframework</a>, APIai etc.). By downloading CART and running the step-by-step instructions in the installation guide (below), all the necessary packages will be installed on the server.</p>
+<p>CART uses a set of Python packages (e.g., PyMySQL, <a class="reference external" href="https://github.com/mbrown1508/microsoftbotframework">microsoftbotframework</a>, google-cloud-dialogflow etc.). By downloading CART and running the step-by-step instructions in the installation guide (below), all the necessary packages will be installed on the server.</p>
 </div>
 </div>
 <div class="section" id="installation-and-setup-guide">
@@ -218,7 +218,7 @@
 </div>
 <div class="section" id="step-2-rename-the-config-yaml-file">
 <h3>Step 2. Rename the config.yaml file<a class="headerlink" href="#step-2-rename-the-config-yaml-file" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, located at the folder <code class="docutils literal notranslate"><span class="pre">cart</span></code>, will contain all the basic configurations needed to connect to the services (DialogFlow, MS Bot Framework and the SQL database), including usernames and passwords. <strong>Never make it publicly available</strong>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, located at the folder <code class="docutils literal notranslate"><span class="pre">cart</span></code>, will contain all the basic configurations needed to connect to the services (MS Bot Framework and the SQL database), including usernames and passwords. <strong>Never make it publicly available</strong>.</p>
 <dl class="simple">
 <dt>To create it, you need to:</dt><dd><ol class="arabic simple">
 <li><p>Copy (or rename) the file called <code class="docutils literal notranslate"><span class="pre">config_example.yaml</span></code> to <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p></li>
@@ -231,9 +231,8 @@
 <h3>Step 3. Create an agent in DialogFlow<a class="headerlink" href="#step-3-create-an-agent-in-dialogflow" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Log in to <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a> and select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Agent</span></code></p></li>
-<li><p>In the agent settings (click on the configuration wheel in the left menu, next to the agent name), find the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code>.</p></li>
-<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code> and add it your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file (replacing the text <code class="docutils literal notranslate"><span class="pre">&lt;&lt;DIALOGFLOW</span> <span class="pre">CLIENT</span> <span class="pre">ACCESS</span> <span class="pre">TOKEN&gt;&gt;</span></code>)</p></li>
+<li><p>Log in to <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a> and select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Agent</span></code>. For CART, all tests have been done with the ES (simpler) version.</p></li>
+<li><p>Follow the <a class="reference external" href="https://cloud.google.com/dialogflow/es/docs/quick/setup">instructions</a> from DialogFlow to enable the API, create a service account, and download the service key account file in JSON format. You will use it on step 5, as part of the web service configuration.</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -270,6 +269,7 @@
 <dl class="simple">
 <dt>If using Heroku:</dt><dd><ol class="arabic simple">
 <li><p>Log into your <a class="reference external" href="https://heroku.com">Heroku</a>  account and create a new app</p></li>
+<li><p>Set the environment variables (called in Heroku “config vars”) for DialogFlow. See note 2, below, for details.</p></li>
 <li><p>Select the deployment method</p></li>
 <li><p>Deploy the app</p></li>
 <li><p>After the build has been completed, select <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">app</span></code></p></li>
@@ -277,7 +277,8 @@
 </ol>
 </dd>
 </dl>
-<p><strong>Note:</strong> the URL of the app is needed so it can be registered in the MS Bot Framework (next step). The registration in the MS Bot Framework will also provide authentication credentials. These credentials will need to be added to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, and the agent will need to be published again in Heroku (as outlined in the next step).</p>
+<p><strong>Note 1:</strong> the URL of the app is needed so it can be registered in the MS Bot Framework (next step). The registration in the MS Bot Framework will also provide authentication credentials. These credentials will need to be added to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, and the agent will need to be published again in Heroku (as outlined in the next step).</p>
+<p><strong>Note 2:</strong> Open the service account file downloaded on step 3(above) locally in a text editor, remove all line breaks, and substitute the double quotes (“) by single quotes (‘). In the web service, add this as an environment variable called DF_CREDENTIALS. Create another environment variable called DF_LANGUAGE_CODE and set its value to the appropriate language (e.g., en).</p>
 </div>
 <div class="section" id="step-6-connect-the-agent-to-the-ms-bot-framework">
 <h3>Step 6. Connect the agent to the MS Bot Framework<a class="headerlink" href="#step-6-connect-the-agent-to-the-ms-bot-framework" title="Permalink to this headline">¶</a></h3>
