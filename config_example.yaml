@@ -5,7 +5,6 @@ other:
     database_name: <<NAME OF THE DATABASE>>
     database_username: <<USERNAME TO ACCESS THE MYSQL DATABASE>>
     database_password: <<PASSWORD TO ACCESS THE MYSQL DATABASE>>
-    dialogflow_access_token: <<DIALOGFLOW CLIENT ACCESS TOKEN>>
     conversationcode_suffix: <<SUFFIX FOR CONVERSATION CODE>
     conversationcode_base: <<STARTING NUMBER FOR CONVERSATION CODE>>
 

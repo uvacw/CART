@@ -1,4 +1,6 @@
 microsoftbotframework
+google-cloud-dialogflow
+proto-plus
 pymysql
 apiai
 gunicorn
