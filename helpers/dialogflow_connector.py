@@ -10,9 +10,9 @@ def proto_message_to_dict(message: proto.Message) -> dict:
 
 
 def detect_intent_texts(session_id, text):
-       '''Connects to DialogFlow using the environment variables 'DF_LANGUAGE_CODE' to determine the language code, 'DF_CREDENTIALS' for authentication.
-       Credentials need to be stored as an environment variable. Before doing so, line-breaks need to be removed, and double-quotes turned into single-quotes.
-       '''
+    '''Connects to DialogFlow using the environment variables 'DF_LANGUAGE_CODE' to determine the language code, 'DF_CREDENTIALS' for authentication.
+    Credentials need to be stored as an environment variable. Before doing so, line-breaks need to be removed, and double-quotes turned into single-quotes.
+    '''
 
     try:
         language_code = os.environ['DF_LANGUAGE_CODE']

@@ -63,11 +63,11 @@ def echo_response(message):
         
         resp_speech = None
 
-        resp_dialogflow = detect_intent_texts(conversationid_trunc, str(message['text']))
+        resp = detect_intent_texts(conversationid_trunc, str(message['text']))
 
         try:
             # resp_speech = resp_dialogflow.query_result.fulfillment_text
-            resp_speech = resp_dialogflow['fulfillmentText']
+            resp_speech = resp['fulfillmentText']
         except:
             resp_speech = 'ERROR: ' + str(resp_dialogflow)
         
