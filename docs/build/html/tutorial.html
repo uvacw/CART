@@ -1,38 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Tutorial &mdash; CART - Conversational Agent Research Toolkit 1.00 documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -78,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -93,7 +98,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configurations-in-the-dialogue-management-tool">Configurations in the dialogue management tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configurations-in-cart">Configurations in CART:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurations-in-cart">Configurations in CART</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -102,6 +107,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -136,18 +142,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Tutorial</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -166,10 +174,10 @@
 <p>This tutorial shows how to create an agent for an experiment as discussed in [REFERENCE TO CCR PAPER].</p>
 <p>Agent specifications:</p>
 <ul class="simple">
-<li>The agent is embedded in a survey flow, and is presented during the survey</li>
-<li>The agent validates a participant id (to start the conversation) and provides a conversation code (at the end of the conversation)</li>
-<li>The agent automatically assigns users to conditions - humanlike or machine - and interacts different with each participant depending on the condition</li>
-<li>A sentiment analysis tool (Vader) is applied to each utterance by the participant, and the results are stored in the logs table in the database</li>
+<li><p>The agent is embedded in a survey flow, and is presented during the survey</p></li>
+<li><p>The agent validates a participant id (to start the conversation) and provides a conversation code (at the end of the conversation)</p></li>
+<li><p>The agent automatically assigns users to conditions - humanlike or machine - and interacts different with each participant depending on the condition</p></li>
+<li><p>A sentiment analysis tool (Vader) is applied to each utterance by the participant, and the results are stored in the logs table in the database</p></li>
 </ul>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -180,15 +188,15 @@
 <h2>Configurations in the dialogue management tool<a class="headerlink" href="#configurations-in-the-dialogue-management-tool" title="Permalink to this headline">¶</a></h2>
 <p>Four intents are created in DialogFlow:</p>
 <ul class="simple">
-<li><em>Welcome</em>: starts when the participant greets the agent, asks for the participant id, and - if the participant id is valid - ends with a token (<code class="docutils literal notranslate"><span class="pre">[PARTICIPANTID_VALID]</span></code>) for CART to know that the next intent (<em>Experiment</em>) needs to be connected</li>
-<li><em>Experiment</em>: starts when CART has received a token indicating that the participant id is valid (<code class="docutils literal notranslate"><span class="pre">[PARTICIPANTID_VALID]</span></code>) and has sent a start token (<code class="docutils literal notranslate"><span class="pre">[START_EXPERIMENT]</span></code>) to DialogFlow. It ends when all the questions in the experimental setup are asked to the participant, providing a conversation code and telling the participant to continue with the survey.</li>
-<li><em>Invalid participant id</em>: intent that is triggered by CART when the participant id provided by the participant in the <em>Welcome</em> intent is not valid.</li>
-<li><em>Validate participant id</em>: fallback intent, which provides instructions for the participant should she want to try to start over (and provide a new participant id).</li>
+<li><p><em>Welcome</em>: starts when the participant greets the agent, asks for the participant id, and - if the participant id is valid - ends with a token (<code class="docutils literal notranslate"><span class="pre">[PARTICIPANTID_VALID]</span></code>) for CART to know that the next intent (<em>Experiment</em>) needs to be connected</p></li>
+<li><p><em>Experiment</em>: starts when CART has received a token indicating that the participant id is valid (<code class="docutils literal notranslate"><span class="pre">[PARTICIPANTID_VALID]</span></code>) and has sent a start token (<code class="docutils literal notranslate"><span class="pre">[START_EXPERIMENT]</span></code>) to DialogFlow. It ends when all the questions in the experimental setup are asked to the participant, providing a conversation code and telling the participant to continue with the survey.</p></li>
+<li><p><em>Invalid participant id</em>: intent that is triggered by CART when the participant id provided by the participant in the <em>Welcome</em> intent is not valid.</p></li>
+<li><p><em>Validate participant id</em>: fallback intent, which provides instructions for the participant should she want to try to start over (and provide a new participant id).</p></li>
 </ul>
 <p>A copy of the agent, including the full dialogue, is available in the folder [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]</p>
 </div>
 <div class="section" id="configurations-in-cart">
-<h2>Configurations in CART:<a class="headerlink" href="#configurations-in-cart" title="Permalink to this headline">¶</a></h2>
+<h2>Configurations in CART<a class="headerlink" href="#configurations-in-cart" title="Permalink to this headline">¶</a></h2>
 <p>The full <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file (without the authentication credentials for the API services, which need to be filled out by each researcher) is also available at [ANONYMIZED LINK TO THE TUTORIAL FOLDER ON GITHUB]. The key configurations look as follows:</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">other</span></code> section, the conversationcode_suffix and the conversationcode_base are added to ensure that participants receive a conversation code at the end of the conversation, and that it always starts with a B, and counting from number 1500 (to prevent low numbers)::</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">other</span><span class="p">:</span>
@@ -255,7 +263,7 @@
 </div>
 <p>For the sentiment analysis to run, two additional files need to be edited. First, the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> is edited to include <code class="docutils literal notranslate"><span class="pre">vaderSentiment</span></code> as a required Python module to be installed. Second, the <code class="docutils literal notranslate"><span class="pre">special_functions.py</span></code> file (inside the helpers folder) is edited to include the function that processes the user_message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## EXAMPLE - SENTIMENT ANALYSIS</span>
-<span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="k">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
 <span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">check_sentiment</span><span class="p">(</span><span class="n">user_message</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -274,29 +282,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Theo Araujo
+        &#169; Copyright 2018, Theo Araujo.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -304,7 +312,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

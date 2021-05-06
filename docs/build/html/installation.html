@@ -1,38 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Installation &mdash; CART - Conversational Agent Research Toolkit 1.00 documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -78,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,6 +120,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -149,18 +155,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -182,11 +190,11 @@
 <h3>Services and APIs<a class="headerlink" href="#services-and-apis" title="Permalink to this headline">¶</a></h3>
 <p>CART acts as an integration layer between different services (and APIs), and specific configurations within CART itself. To use it, you will need:</p>
 <ol class="arabic simple">
-<li>Access to a SQL database</li>
-<li>Access to a web service to publish CART (using Python 3.X)</li>
-<li>An account with <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a></li>
-<li>An account with the <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a></li>
-<li>A copy of the CART code</li>
+<li><p>Access to a SQL database</p></li>
+<li><p>Access to a web service to publish CART (using Python 3.X)</p></li>
+<li><p>An account with <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a></p></li>
+<li><p>An account with the <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a></p></li>
+<li><p>A copy of the CART code</p></li>
 </ol>
 <p>Optionally, you also would need access to an online questionnaire tool (e.g., Qualtrics, SurveyMonkey) if you are integrating CART into a survey flow.</p>
 <p><strong>Note:</strong> For #1 and #2, you can use your own server (if available), or AWS RDS (database) and Heroku (web service) as demonstrated in the <a class="reference internal" href="#installation-setup-guide"><span class="std std-ref">Installation and Setup Guide</span></a>.</p>
@@ -203,19 +211,18 @@
 <h3>Step 1. Download CART to your computer<a class="headerlink" href="#step-1-download-cart-to-your-computer" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Access [ANONYMIZED LINK OF THE GITHUB REPOSITORY] and select <code class="docutils literal notranslate"><span class="pre">clone</span> <span class="pre">or</span> <span class="pre">download</span></code> and download CART as a zip file.</li>
-<li>Extract the zip file in a folder you want to store the agent</li>
+<li><p>Access [ANONYMIZED LINK OF THE GITHUB REPOSITORY] and select <code class="docutils literal notranslate"><span class="pre">clone</span> <span class="pre">or</span> <span class="pre">download</span></code> and download CART as a zip file.</p></li>
+<li><p>Extract the zip file in a folder you want to store the agent</p></li>
 </ol>
 </div></blockquote>
 </div>
 <div class="section" id="step-2-rename-the-config-yaml-file">
 <h3>Step 2. Rename the config.yaml file<a class="headerlink" href="#step-2-rename-the-config-yaml-file" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, located at the folder <code class="docutils literal notranslate"><span class="pre">cart</span></code>, will contain all the basic configurations needed to connect to the services (DialogFlow, MS Bot Framework and the SQL database), including usernames and passwords. <strong>Never make it publicly available</strong>.</p>
-<dl class="docutils">
-<dt>To create it, you need to:</dt>
-<dd><ol class="first last arabic simple">
-<li>Copy (or rename) the file called <code class="docutils literal notranslate"><span class="pre">config_example.yaml</span></code> to <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></li>
-<li>In the steps 3, 4 and 6 (below), you will need to update this file with information coming from each service.</li>
+<dl class="simple">
+<dt>To create it, you need to:</dt><dd><ol class="arabic simple">
+<li><p>Copy (or rename) the file called <code class="docutils literal notranslate"><span class="pre">config_example.yaml</span></code> to <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p></li>
+<li><p>In the steps 3, 4 and 6 (below), you will need to update this file with information coming from each service.</p></li>
 </ol>
 </dd>
 </dl>
@@ -224,34 +231,31 @@
 <h3>Step 3. Create an agent in DialogFlow<a class="headerlink" href="#step-3-create-an-agent-in-dialogflow" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Log in to <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a> and select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Agent</span></code></li>
-<li>In the agent settings (click on the configuration wheel in the left menu, next to the agent name), find the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code>.</li>
-<li>Copy the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code> and add it your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file (replacing the text <code class="docutils literal notranslate"><span class="pre">&lt;&lt;DIALOGFLOW</span> <span class="pre">CLIENT</span> <span class="pre">ACCESS</span> <span class="pre">TOKEN&gt;&gt;</span></code>)</li>
+<li><p>Log in to <a class="reference external" href="https://www.dialogflow.com">DialogFlow</a> and select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Agent</span></code></p></li>
+<li><p>In the agent settings (click on the configuration wheel in the left menu, next to the agent name), find the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code>.</p></li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">access</span> <span class="pre">token</span></code> and add it your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file (replacing the text <code class="docutils literal notranslate"><span class="pre">&lt;&lt;DIALOGFLOW</span> <span class="pre">CLIENT</span> <span class="pre">ACCESS</span> <span class="pre">TOKEN&gt;&gt;</span></code>)</p></li>
 </ol>
 </div></blockquote>
 </div>
 <div class="section" id="step-4-create-a-database-for-logging">
 <h3>Step 4. Create a database for logging<a class="headerlink" href="#step-4-create-a-database-for-logging" title="Permalink to this headline">¶</a></h3>
 <p>CART requires the the URL (host) of a MySQL database, database name, and username and password to connect to and log the conversations between the agent and participants. The username provided needs to have all privileges (including CREATE) in the database. This information needs to be made included in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</p>
-<dl class="docutils">
-<dt>If using AWS RDS, the following steps need to be followed:</dt>
-<dd><ol class="first last arabic simple">
-<li>Log into your <a class="reference external" href="https://aws.amazon.com">AWS</a>  account and select RDS</li>
-<li>Create a database using MySQL, and make sure to include the username and the password also in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file</li>
-<li>When asked for the database name, make sure to inform it, and also include it in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</li>
-<li>Select the endpoint of the database (check the dabatase details page), and paste it in the <code class="docutils literal notranslate"><span class="pre">database_url</span></code> field of <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>.</li>
-<li>After the database is launched, make sure to check the security group (see database details), and open the inbound port to the server that you will be using.</li>
+<dl class="simple">
+<dt>If using AWS RDS, the following steps need to be followed:</dt><dd><ol class="arabic simple">
+<li><p>Log into your <a class="reference external" href="https://aws.amazon.com">AWS</a>  account and select RDS</p></li>
+<li><p>Create a database using MySQL, and make sure to include the username and the password also in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file</p></li>
+<li><p>When asked for the database name, make sure to inform it, and also include it in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</p></li>
+<li><p>Select the endpoint of the database (check the dabatase details page), and paste it in the <code class="docutils literal notranslate"><span class="pre">database_url</span></code> field of <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>.</p></li>
+<li><p>After the database is launched, make sure to check the security group (see database details), and open the inbound port to the server that you will be using.</p></li>
 </ol>
 </dd>
-<dt><em>Notes:</em></dt>
-<dd><ul class="first last simple">
-<li>Usually a micro or small instance in AWS is sufficient for testing purposes, and can later be upgraded to medium/large when the agent is live and handling several conversations at the same time (e.g., during an experiment)</li>
-<li>For security reasons, it is recommended not to allow any IP to connect to your database. When using Heroku, see this list of <a class="reference external" href="https://elements.heroku.com/addons/categories/network">plugins</a> that can create a static IP for your app.</li>
-<li><dl class="first docutils">
-<dt>When running the agent in the server for the first time, it will automatically create two tables in the database:</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">logs</span></code>, which records every interaction between the agent and the participant</li>
-<li><code class="docutils literal notranslate"><span class="pre">conversations</span></code>, which records each individual conversation (i.e., in general, each participant = one conversation) that is started with the agent.</li>
+<dt><em>Notes:</em></dt><dd><ul class="simple">
+<li><p>Usually a micro or small instance in AWS is sufficient for testing purposes, and can later be upgraded to medium/large when the agent is live and handling several conversations at the same time (e.g., during an experiment)</p></li>
+<li><p>For security reasons, it is recommended not to allow any IP to connect to your database. When using Heroku, see this list of <a class="reference external" href="https://elements.heroku.com/addons/categories/network">plugins</a> that can create a static IP for your app.</p></li>
+<li><dl class="simple">
+<dt>When running the agent in the server for the first time, it will automatically create two tables in the database:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">logs</span></code>, which records every interaction between the agent and the participant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conversations</span></code>, which records each individual conversation (i.e., in general, each participant = one conversation) that is started with the agent.</p></li>
 </ul>
 </dd>
 </dl>
@@ -263,14 +267,13 @@
 <div class="section" id="step-5-publish-the-agent-as-a-web-service">
 <h3>Step 5. Publish the agent as a web service<a class="headerlink" href="#step-5-publish-the-agent-as-a-web-service" title="Permalink to this headline">¶</a></h3>
 <p>After completing the steps above, it is time to publish the agent as a web service. This can be done using Heroku (as demonstrated below) or in any other server that supports Python and Flask applications. It is important to note that the server should also be able to serve pages in https.</p>
-<dl class="docutils">
-<dt>If using Heroku:</dt>
-<dd><ol class="first last arabic simple">
-<li>Log into your <a class="reference external" href="https://heroku.com">Heroku</a>  account and create a new app</li>
-<li>Select the deployment method</li>
-<li>Deploy the app</li>
-<li>After the build has been completed, select <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">app</span></code></li>
-<li>Copy the URL of the app (it should start with the app-name, and end with <code class="docutils literal notranslate"><span class="pre">herokuapp.com</span></code>) to use in the next step</li>
+<dl class="simple">
+<dt>If using Heroku:</dt><dd><ol class="arabic simple">
+<li><p>Log into your <a class="reference external" href="https://heroku.com">Heroku</a>  account and create a new app</p></li>
+<li><p>Select the deployment method</p></li>
+<li><p>Deploy the app</p></li>
+<li><p>After the build has been completed, select <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">app</span></code></p></li>
+<li><p>Copy the URL of the app (it should start with the app-name, and end with <code class="docutils literal notranslate"><span class="pre">herokuapp.com</span></code>) to use in the next step</p></li>
 </ol>
 </dd>
 </dl>
@@ -281,20 +284,20 @@
 <p>After a URL for the agent as a web service is available (e.g., for Heroku: <code class="docutils literal notranslate"><span class="pre">https://NAMEOFTHEAPP.herokuapp.com/</span></code>), the agent can be registered in the MS Bot Framework. To do so:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Log in your <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a> account, selecting <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Bots</span></code></li>
-<li>Select <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">bot</span></code>. You will be redirected to Azure Bot Service</li>
-<li>Select <code class="docutils literal notranslate"><span class="pre">Bot</span> <span class="pre">Channels</span> <span class="pre">Registration</span></code></li>
-<li>Provide the information required</li>
-<li>The messaging endpoint will be the URL of the Heroku app + <code class="docutils literal notranslate"><span class="pre">api/messages</span></code> - example: <code class="docutils literal notranslate"><span class="pre">https://NAMEOFTHEAPP.herokuapp.com//api/messages</span></code></li>
-<li>After the channel registration is deployed, select <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">resource</span></code> (or simply open it in Azure)</li>
-<li>In the <code class="docutils literal notranslate"><span class="pre">Settings</span></code>, go to the Microsoft App ID area</li>
-<li>Copy the Microsoft App ID and add it to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file under <code class="docutils literal notranslate"><span class="pre">app_client_id</span></code></li>
-<li>Click on <code class="docutils literal notranslate"><span class="pre">Manage</span></code> for the Microsoft App ID</li>
-<li>In the new window, select <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">new</span> <span class="pre">password</span></code>. Copy this password and add it to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file under <code class="docutils literal notranslate"><span class="pre">app_client_secret</span></code></li>
-<li>Click on <code class="docutils literal notranslate"><span class="pre">save</span></code> and close this window</li>
-<li>In the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, add the name of the agent under <code class="docutils literal notranslate"><span class="pre">agent_name</span></code></li>
-<li>Go back to Heroku and re-deploy the app (with the latest version of the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file).</li>
-<li>After the redeployment, you can use <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">in</span> <span class="pre">Web</span> <span class="pre">Chat</span></code> function on Azure Bot Service (same area where the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> were) to test the connection.</li>
+<li><p>Log in your <a class="reference external" href="https://dev.botframework.com/">Microsoft Bot Framework</a> account, selecting <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Bots</span></code></p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">a</span> <span class="pre">bot</span></code>. You will be redirected to Azure Bot Service</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Bot</span> <span class="pre">Channels</span> <span class="pre">Registration</span></code></p></li>
+<li><p>Provide the information required</p></li>
+<li><p>The messaging endpoint will be the URL of the Heroku app + <code class="docutils literal notranslate"><span class="pre">api/messages</span></code> - example: <code class="docutils literal notranslate"><span class="pre">https://NAMEOFTHEAPP.herokuapp.com//api/messages</span></code></p></li>
+<li><p>After the channel registration is deployed, select <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">resource</span></code> (or simply open it in Azure)</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Settings</span></code>, go to the Microsoft App ID area</p></li>
+<li><p>Copy the Microsoft App ID and add it to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file under <code class="docutils literal notranslate"><span class="pre">app_client_id</span></code></p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">Manage</span></code> for the Microsoft App ID</p></li>
+<li><p>In the new window, select <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">new</span> <span class="pre">password</span></code>. Copy this password and add it to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file under <code class="docutils literal notranslate"><span class="pre">app_client_secret</span></code></p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">save</span></code> and close this window</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, add the name of the agent under <code class="docutils literal notranslate"><span class="pre">agent_name</span></code></p></li>
+<li><p>Go back to Heroku and re-deploy the app (with the latest version of the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file).</p></li>
+<li><p>After the redeployment, you can use <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">in</span> <span class="pre">Web</span> <span class="pre">Chat</span></code> function on Azure Bot Service (same area where the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> were) to test the connection.</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -314,29 +317,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="using.html" class="btn btn-neutral float-right" title="Using CART" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="about.html" class="btn btn-neutral float-left" title="About CART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="using.html" class="btn btn-neutral float-right" title="Using CART" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about.html" class="btn btn-neutral float-left" title="About CART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Theo Araujo
+        &#169; Copyright 2018, Theo Araujo.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -344,7 +347,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

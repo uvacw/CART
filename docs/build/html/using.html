@@ -1,38 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Using CART &mdash; CART - Conversational Agent Research Toolkit 1.00 documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -78,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -117,6 +122,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -151,18 +157,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Using CART</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/using.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -196,17 +204,16 @@
 <p>To assign participants to experimental conditions using CART, the researcher should edit the section <code class="docutils literal notranslate"><span class="pre">experimental_design</span></code> of the  <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file in the following manner:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Set <code class="docutils literal notranslate"><span class="pre">assignment_manager</span></code> to <code class="docutils literal notranslate"><span class="pre">CART</span></code></li>
-<li><dl class="first docutils">
-<dt>Select the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code>. Two options can be used:</dt>
-<dd><ol class="first last loweralpha">
-<li><code class="docutils literal notranslate"><span class="pre">random_balanced</span></code>, which tries to keep the number of participants per condition always equal, and randomly assigns a new participant to a condition when the number of participants per condition is the same. When the number of participants per condition is different, a new participant is assigned to the condition with the lowest number of participants.</li>
-<li><code class="docutils literal notranslate"><span class="pre">fully_random</span></code>, which randomly assigns the participant to a condition. As it is fully random, the conditions may be unbalanced if the sample size is low.</li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">assignment_manager</span></code> to <code class="docutils literal notranslate"><span class="pre">CART</span></code></p></li>
+<li><dl class="simple">
+<dt>Select the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code>. Two options can be used:</dt><dd><ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">random_balanced</span></code>, which tries to keep the number of participants per condition always equal, and randomly assigns a new participant to a condition when the number of participants per condition is the same. When the number of participants per condition is different, a new participant is assigned to the condition with the lowest number of participants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fully_random</span></code>, which randomly assigns the participant to a condition. As it is fully random, the conditions may be unbalanced if the sample size is low.</p></li>
 </ol>
 </dd>
 </dl>
 </li>
-<li>In the <code class="docutils literal notranslate"><span class="pre">conditions</span></code> section, include as many conditions as needed, always using the structure shown in the <code class="docutils literal notranslate"><span class="pre">config_template.yaml</span></code>, i.e., adding a new condition by having one indentation with condition_NUMBER, and another indentation with <code class="docutils literal notranslate"><span class="pre">condition_name</span></code>, and then including the actual condition name (without spaces). The <code class="docutils literal notranslate"><span class="pre">condition_name</span></code> will be stored in the database (table: conversations), along with participant details.</li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">conditions</span></code> section, include as many conditions as needed, always using the structure shown in the <code class="docutils literal notranslate"><span class="pre">config_template.yaml</span></code>, i.e., adding a new condition by having one indentation with condition_NUMBER, and another indentation with <code class="docutils literal notranslate"><span class="pre">condition_name</span></code>, and then including the actual condition name (without spaces). The <code class="docutils literal notranslate"><span class="pre">condition_name</span></code> will be stored in the database (table: conversations), along with participant details.</p></li>
 </ol>
 </div></blockquote>
 <p>After the conditions are created, the researcher can customise the responses that the dialogue manager provides to the participant depending on the condition that the participant is in. For more details, see <a class="reference internal" href="#customising-responses"><span class="std std-ref">Customising responses</span></a>.</p>
@@ -218,8 +225,8 @@
 <h3>Same rephrase for all conditions<a class="headerlink" href="#same-rephrase-for-all-conditions" title="Permalink to this headline">¶</a></h3>
 <p>To customise (rephrase) the response from the dialogue manager in the same way regardless of the experimental condition, the researcher should add the following information to the <code class="docutils literal notranslate"><span class="pre">all_conditions</span></code> section:</p>
 <ul class="simple">
-<li>TOKEN - all in uppercase and without spaces. The token is the part of the response from the dialogue manager (between square brackets) that needs to be substituted.</li>
-<li>New text - what should be included instead of the token in the response</li>
+<li><p>TOKEN - all in uppercase and without spaces. The token is the part of the response from the dialogue manager (between square brackets) that needs to be substituted.</p></li>
+<li><p>New text - what should be included instead of the token in the response</p></li>
 </ul>
 <p>For example: if in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, the following line is added:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rephrases</span><span class="p">:</span>
@@ -257,20 +264,19 @@
 <h2>Overriding the dialogue manager<a class="headerlink" href="#overriding-the-dialogue-manager" title="Permalink to this headline">¶</a></h2>
 <p>There may be instances in which the researcher does not want to send the message from the participant to the dialogue manager, and instead may want to directly provide a response to the participant. To do so, the researcher should add a new override to the <code class="docutils literal notranslate"><span class="pre">overrides</span></code> section of the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, with the following information:</p>
 <ul class="simple">
-<li>override_reason - a keyword with the reason why the override is being done. This will be stored in the database (table: logs) as an event.</li>
-<li>override_terms_in_user_message - a list of words or strings to be searched for in the user_message (separated by commas, without punctuation or special characters)</li>
-<li>override_terms_case_sensitive - indicate whether the term that will be searched for in the user_message are case-sensitive (True) or not (False)</li>
-<li><dl class="first docutils">
-<dt>override_terms_matching - indicate how the terms for the override should be searched for in the user_message. Three options are available:</dt>
-<dd><ul class="first last">
-<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">full_string</span></code>, it checks the user_message is equal to any of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, if the user_message is “apple” and this is one of the terms, then it will meet the condition. If the user_message is “I like apple”, it won’t match.</li>
-<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">string</span></code>, it checks if each of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message using string matching. For example, the term “apple” would be found in the messages “I like apple” and “I like pineapples”.</li>
-<li>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">tokens</span></code>, it first splits the user_message in tokens (removing any punctuation marks or special characters), and then checks if any of the tokens of the user_message is present in the terms from <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, the term “apple” would be found in the messages “I like apple” but not in “I like pineapples”.</li>
+<li><p>override_reason - a keyword with the reason why the override is being done. This will be stored in the database (table: logs) as an event.</p></li>
+<li><p>override_terms_in_user_message - a list of words or strings to be searched for in the user_message (separated by commas, without punctuation or special characters)</p></li>
+<li><p>override_terms_case_sensitive - indicate whether the term that will be searched for in the user_message are case-sensitive (True) or not (False)</p></li>
+<li><dl class="simple">
+<dt>override_terms_matching - indicate how the terms for the override should be searched for in the user_message. Three options are available:</dt><dd><ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">full_string</span></code>, it checks the user_message is equal to any of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, if the user_message is “apple” and this is one of the terms, then it will meet the condition. If the user_message is “I like apple”, it won’t match.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">string</span></code>, it checks if each of the terms in <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code> is present in the user_message using string matching. For example, the term “apple” would be found in the messages “I like apple” and “I like pineapples”.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">override_terms_matching</span></code> is set to <code class="docutils literal notranslate"><span class="pre">tokens</span></code>, it first splits the user_message in tokens (removing any punctuation marks or special characters), and then checks if any of the tokens of the user_message is present in the terms from <code class="docutils literal notranslate"><span class="pre">override_terms_in_user_message</span></code>. For example, the term “apple” would be found in the messages “I like apple” but not in “I like pineapples”.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>override_response_from_agent: the response that the agent should give to the participant.</li>
+<li><p>override_response_from_agent: the response that the agent should give to the participant.</p></li>
 </ul>
 <p>As an example, the researcher may want to configure the agent to simply say good bye and provide the conversation code to the participant, instead of going to the dialogue manager. To do so, two pieces of code need to be added to the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">overrides</span></code> section:</p>
@@ -294,8 +300,8 @@
 <p>While the dialogue manager (DialogFlow) allows to route conversations from one intent to the other via its own interface, there may be instances in which the researcher will want to do it directly in CART, especially when CART’s custom logic is also in place. For example, if validating a participant id is needed, the welcome intent should simply ask the participant for a participant id. CART will check if the participant id provided is valid - and will override this if necessary - and will allow the conversation to continue. If the researcher wants the agent to immediately ask a question to the participant (instead of waiting for the participant to ask a question to the agent), it is easier to make sure that the welcome intent redirects the participant to a new intent.</p>
 <p>Two ways can be used:</p>
 <ul class="simple">
-<li>Adding a follow-up intent in DialogFlow directly</li>
-<li>Using CART to connect the Welcome Intent to the new intent</li>
+<li><p>Adding a follow-up intent in DialogFlow directly</p></li>
+<li><p>Using CART to connect the Welcome Intent to the new intent</p></li>
 </ul>
 <p>To use the second option, the researcher needs to make some configurations in DialogFlow, and others in CART. In DialogFlow, the Text response of the Welcome intent should be a token, that will be picked up by CART. For example, it could simply be <code class="docutils literal notranslate"><span class="pre">[PARTICIPANTID_VALID]</span></code> (as what the Welcome intent is doing is validating the participant id). A second intent, which could be the experimental setting, would be configured in DialogFlow to start with the input <code class="docutils literal notranslate"><span class="pre">[START_EXPERIMENT]</span></code>.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file, the researcher would need to add a <code class="docutils literal notranslate"><span class="pre">connect_intents</span></code> section, with the following code::</p>
@@ -310,13 +316,13 @@
 <p>CART allows the researcher to integrate custom functions, including (pre-trained) classifiers to the conversation flow. To do so, the researcher needs to edit the file <code class="docutils literal notranslate"><span class="pre">special_functions.py</span></code> inside the <code class="docutils literal notranslate"><span class="pre">helpers</span></code> folder, and add a new function. This function always takes the user_message as an input (i.e., what the participant chatted with the agent), and can return an output (or not) upon which CART will determine whether an override action should be taken. The <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file also needs to be edited with a new function section, containing:</p>
 <blockquote>
 <div><ul class="simple">
-<li>function_name: the name of the function included in the <code class="docutils literal notranslate"><span class="pre">special_functions.py</span></code> file</li>
-<li>store_output: at present, it always needs to be in the <code class="docutils literal notranslate"><span class="pre">logs</span></code> table.</li>
-<li>store_output_field: the name of the field in which the output of the function will be stored in the <code class="docutils literal notranslate"><span class="pre">logs</span></code> table within the database.</li>
-<li>store_output_field_type: the type of field (following MySQL standards) in which the output will be stored. The most common values should be <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">text</span></code></li>
-<li>function_action: if <code class="docutils literal notranslate"><span class="pre">True</span></code>, CART will evaluate the output of the function and may create an override depending on the result. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, CART will only store the output of the function in the database, but will not change the conversation.</li>
-<li>function_comparison: the Python code (written between quotes) that should be executed - considering that the output of the function will be at the beginning of the code. The code should always provide a True or False as result. For example, if the idea is to see if the output of the function is positive, the code written should be <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">'</span></code>.</li>
-<li>function_comparison_met: exact text that should be picked up by the override function (so that the change in the conversation can take place)</li>
+<li><p>function_name: the name of the function included in the <code class="docutils literal notranslate"><span class="pre">special_functions.py</span></code> file</p></li>
+<li><p>store_output: at present, it always needs to be in the <code class="docutils literal notranslate"><span class="pre">logs</span></code> table.</p></li>
+<li><p>store_output_field: the name of the field in which the output of the function will be stored in the <code class="docutils literal notranslate"><span class="pre">logs</span></code> table within the database.</p></li>
+<li><p>store_output_field_type: the type of field (following MySQL standards) in which the output will be stored. The most common values should be <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">text</span></code></p></li>
+<li><p>function_action: if <code class="docutils literal notranslate"><span class="pre">True</span></code>, CART will evaluate the output of the function and may create an override depending on the result. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, CART will only store the output of the function in the database, but will not change the conversation.</p></li>
+<li><p>function_comparison: the Python code (written between quotes) that should be executed - considering that the output of the function will be at the beginning of the code. The code should always provide a True or False as result. For example, if the idea is to see if the output of the function is positive, the code written should be <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">'</span></code>.</p></li>
+<li><p>function_comparison_met: exact text that should be picked up by the override function (so that the change in the conversation can take place)</p></li>
 </ul>
 </div></blockquote>
 <p>Note: if any additional Python modules are required, they should be added to the requirements.txt file in the root folder so they can be installed in the server when starting up CART.</p>
@@ -355,7 +361,7 @@
 </div>
 <p>Added to <code class="docutils literal notranslate"><span class="pre">special_functions.py</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## EXAMPLE - SENTIMENT ANALYSIS</span>
-<span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="k">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
 <span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">check_sentiment</span><span class="p">(</span><span class="n">user_message</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -376,10 +382,10 @@
 <p>In this scenario, the participant first has a conversation with the agent and, at the end of the conversation, the agent provides a link asking the respondent to complete the questionnaire. The link contains the conversation code (as a parameter), so that the survey tool managing the questionnaire can capture the parameter as metadata.</p>
 <p>To do so, the <code class="docutils literal notranslate"><span class="pre">questionnaire_flow</span></code> from the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file needs to be edited with the following information:</p>
 <ul class="simple">
-<li>enabled: needs to be set to True</li>
-<li>moment: needs to be set to before</li>
-<li>rephrase_token: needs to contain the token (without square brackets) that the dialogue management will use to indicate that the agent needs to stop the conversation and send the link to the survey.</li>
-<li>rephrase_text: the text that the agent should say when inviting the participant to answer the questionnaire. The link to the questionnaire should also be added. The rephrase text uses markdown format, so the link is added as [LINKTEXT](URL)</li>
+<li><p>enabled: needs to be set to True</p></li>
+<li><p>moment: needs to be set to before</p></li>
+<li><p>rephrase_token: needs to contain the token (without square brackets) that the dialogue management will use to indicate that the agent needs to stop the conversation and send the link to the survey.</p></li>
+<li><p>rephrase_text: the text that the agent should say when inviting the participant to answer the questionnaire. The link to the questionnaire should also be added. The rephrase text uses markdown format, so the link is added as [LINKTEXT](URL)</p></li>
 </ul>
 <p>The following example shows an integration with Qualtrics, with the conversation code being passed as a parameter in the URL (with the embedded metadata field called <code class="docutils literal notranslate"><span class="pre">convcode</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>questionnaire_flow:
@@ -399,22 +405,22 @@
 <p>This integration is slightly more complex, as it is important to both ensure that CART stores a unique identifier of the participant at the beginning of the conversation, and that, when continuing on to the second part of the survey, the participant provides some proof that the conversation took place. To do so, the proposed flow works in the following way:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>When starting the conversation with the agent, the agent asks the participant for a participant id.</li>
-<li>The agent validates the participant id (according to rules specified by the researcher) and, if applicable, also assigns a condition to the participant based on the id.</li>
-<li>When ending the conversation, the agent provides a conversation code, that the participant should copy and paste in the survey (to prove that the conversation took place).</li>
+<li><p>When starting the conversation with the agent, the agent asks the participant for a participant id.</p></li>
+<li><p>The agent validates the participant id (according to rules specified by the researcher) and, if applicable, also assigns a condition to the participant based on the id.</p></li>
+<li><p>When ending the conversation, the agent provides a conversation code, that the participant should copy and paste in the survey (to prove that the conversation took place).</p></li>
 </ol>
 </div></blockquote>
 <p>The participant id in CART should always be a set of letters followed by a number. For example ABC11190320930293. The letters (ABC) will be used to assign the condition (if applicable) whereas the numbers can come from a random number generator in the online questionnaire, assigning a unique number to the respondent.</p>
 <p>To do so, the <code class="docutils literal notranslate"><span class="pre">questionnaire_flow</span></code> from the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file needs to be edited with the following information:</p>
 <ul class="simple">
-<li>enabled: needs to be set to True</li>
-<li>moment: needs to be set to during</li>
-<li>rephrase_start_token: the token (e.g., [VALIDATEPARTICIPANTID]) that the dialogue manager provides as a response when the moment comes to validate the participant id.</li>
-<li>participantid_dialog_field: the name of the field, set in the dialogue manager, that stores the participant id (when provided by the respondent)</li>
-<li>participantid_valid_suffixes: the combinations of letters that should be accepted by the agent as part of the participant id.</li>
-<li>participantid_not_recognized: the token that should be provided to CART when a participant id is not recognised (or set as invalid)</li>
-<li>rephrase_end_token: the token (e.g., [SENDTOSURVEY]) that the dialogue management will use to indicate that the agent needs to stop the conversation and ask the participant to continue with the survey.</li>
-<li>rephrase_end_text: the text that the agent should say when asking the participant to continue with the survey. It is good practice to provide the conversation code in this text (with the |CONVERSATIONCODE| token)</li>
+<li><p>enabled: needs to be set to True</p></li>
+<li><p>moment: needs to be set to during</p></li>
+<li><p>rephrase_start_token: the token (e.g., [VALIDATEPARTICIPANTID]) that the dialogue manager provides as a response when the moment comes to validate the participant id.</p></li>
+<li><p>participantid_dialog_field: the name of the field, set in the dialogue manager, that stores the participant id (when provided by the respondent)</p></li>
+<li><p>participantid_valid_suffixes: the combinations of letters that should be accepted by the agent as part of the participant id.</p></li>
+<li><p>participantid_not_recognized: the token that should be provided to CART when a participant id is not recognised (or set as invalid)</p></li>
+<li><p>rephrase_end_token: the token (e.g., [SENDTOSURVEY]) that the dialogue management will use to indicate that the agent needs to stop the conversation and ask the participant to continue with the survey.</p></li>
+<li><p>rephrase_end_text: the text that the agent should say when asking the participant to continue with the survey. It is good practice to provide the conversation code in this text (with the |CONVERSATIONCODE| token)</p></li>
 </ul>
 <p>The following example shows an integration with Qualtrics, with the conversation code being passed as a parameter in the URL (with the embedded metadata field called <code class="docutils literal notranslate"><span class="pre">convcode</span></code>:</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> at the questionnaire flow section:</p>
@@ -432,7 +438,7 @@
 </div>
 <p>In DialogFlow:</p>
 <ul>
-<li><p class="first">Intent 1: Default Welcome Intent (so the every new conversation asks for a participant id):</p>
+<li><p>Intent 1: Default Welcome Intent (so the every new conversation asks for a participant id):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* In action and parameters:
     * Required: yes
     * Parameter Name: participantid
@@ -442,7 +448,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Intent 2: Invalid participant id (used when the participant id is invalid):</p>
+<li><p>Intent 2: Invalid participant id (used when the participant id is invalid):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* Machine Learning set to off
 * Training Phrases: [PARTICIPANTID_INVALID]
 * In action and parameters:
@@ -462,19 +468,19 @@
 <p>It is important to  ensure that CART stores a unique identifier of the participant at the beginning of the conversation. To do so, the proposed flow works in the following way:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>When starting the conversation with the agent, the agent asks the participant for a participant id.</li>
-<li>The agent validates the participant id (according to rules specified by the researcher) and, if applicable, also assigns a condition to the participant based on the id.</li>
+<li><p>When starting the conversation with the agent, the agent asks the participant for a participant id.</p></li>
+<li><p>The agent validates the participant id (according to rules specified by the researcher) and, if applicable, also assigns a condition to the participant based on the id.</p></li>
 </ol>
 </div></blockquote>
 <p>The participant id in CART should always be a set of letters followed by a number. For example ABC11190320930293. The letters (ABC) will be used to assign the condition (if applicable) whereas the numbers can come from a random number generator in the online questionnaire, assigning a unique number to the respondent.</p>
 <p>To do so, the <code class="docutils literal notranslate"><span class="pre">questionnaire_flow</span></code> from the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file needs to be edited with the following information:</p>
 <ul class="simple">
-<li>enabled: needs to be set to True</li>
-<li>moment: needs to be set to after</li>
-<li>rephrase_start_token: the token (e.g., [VALIDATEPARTICIPANTID]) that the dialogue manager provides as a response when the moment comes to validate the participant id.</li>
-<li>participantid_dialog_field: the name of the field, set in the dialogue manager, that stores the participant id (when provided by the respondent)</li>
-<li>participantid_valid_suffixes: the combinations of letters that should be accepted by the agent as part of the participant id.</li>
-<li>participantid_not_recognized: the token that should be provided to CART when a participant id is not recognised (or set as invalid)</li>
+<li><p>enabled: needs to be set to True</p></li>
+<li><p>moment: needs to be set to after</p></li>
+<li><p>rephrase_start_token: the token (e.g., [VALIDATEPARTICIPANTID]) that the dialogue manager provides as a response when the moment comes to validate the participant id.</p></li>
+<li><p>participantid_dialog_field: the name of the field, set in the dialogue manager, that stores the participant id (when provided by the respondent)</p></li>
+<li><p>participantid_valid_suffixes: the combinations of letters that should be accepted by the agent as part of the participant id.</p></li>
+<li><p>participantid_not_recognized: the token that should be provided to CART when a participant id is not recognised (or set as invalid)</p></li>
 </ul>
 <p>The following example shows an integration with Qualtrics, with the conversation code being passed as a parameter in the URL (with the embedded metadata field called <code class="docutils literal notranslate"><span class="pre">convcode</span></code>:</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> at the questionnaire flow section:</p>
@@ -490,7 +496,7 @@
 </div>
 <p>In DialogFlow:</p>
 <ul>
-<li><p class="first">Intent 1: Default Welcome Intent (so the every new conversation asks for a participant id):</p>
+<li><p>Intent 1: Default Welcome Intent (so the every new conversation asks for a participant id):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* In action and parameters:
     * Required: yes
     * Parameter Name: participantid
@@ -500,7 +506,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Intent 2: Invalid participant id (used when the participant id is invalid):</p>
+<li><p>Intent 2: Invalid participant id (used when the participant id is invalid):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* Machine Learning set to off
 * Training Phrases: [PARTICIPANTID_INVALID]
 * In action and parameters:
@@ -522,29 +528,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Theo Araujo
+        &#169; Copyright 2018, Theo Araujo.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -552,7 +558,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
