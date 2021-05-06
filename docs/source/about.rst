@@ -22,7 +22,7 @@ CART currently uses `DialogFlow <https://www.dialogflow.com>`_ as the primary to
 Agent Publication
 #################
 
-CART currently uses the `Microsoft Bot Framework <https://dev.botframework.com/>`_ to publish the conversational agent. Within CART, the Bot Framework is responsible for creating a webchat for users to chat with the agent. This webchat can be embedded in online surveys. The Bot Framework also allows the agent to be published in other channels (e.g., Skype, Telegram, Facebook Messenger) without needing to change the code within CART.
+CART currently uses the `Microsoft Azure Bot Channel Registration <https://dev.botframework.com/>`_ to publish the conversational agent. Within CART, the Bot Framework is responsible for creating a webchat for users to chat with the agent. This webchat can be embedded in online surveys. The Bot Framework also allows the agent to be published in other channels (e.g., Skype, Telegram, Facebook Messenger) without needing to change the code within CART.
 
 
 Conversation Logging

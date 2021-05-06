@@ -26,7 +26,7 @@ Optionally, you also would need access to an online questionnaire tool (e.g., Qu
 Python Packages
 ###############
 
-CART uses a set of Python packages (e.g., PyMySQL, `microsoftbotframework <https://github.com/mbrown1508/microsoftbotframework>`_, APIai etc.). By downloading CART and running the step-by-step instructions in the installation guide (below), all the necessary packages will be installed on the server.
+CART uses a set of Python packages (e.g., PyMySQL, `microsoftbotframework <https://github.com/mbrown1508/microsoftbotframework>`_, google-cloud-dialogflow etc.). By downloading CART and running the step-by-step instructions in the installation guide (below), all the necessary packages will be installed on the server.
 
 
 .. _installation-setup-guide:
@@ -46,7 +46,7 @@ Step 1. Download CART to your computer
 Step 2. Rename the config.yaml file
 ###################################
 
-The ``config.yaml`` file, located at the folder ``cart``, will contain all the basic configurations needed to connect to the services (DialogFlow, MS Bot Framework and the SQL database), including usernames and passwords. **Never make it publicly available**.
+The ``config.yaml`` file, located at the folder ``cart``, will contain all the basic configurations needed to connect to the services (MS Bot Framework and the SQL database), including usernames and passwords. **Never make it publicly available**.
 
 To create it, you need to:
 	1. Copy (or rename) the file called ``config_example.yaml`` to ``config.yaml``
@@ -57,9 +57,8 @@ To create it, you need to:
 Step 3. Create an agent in DialogFlow
 #####################################
 
-	1. Log in to `DialogFlow <https://www.dialogflow.com>`_ and select ``Create Agent``
-	2. In the agent settings (click on the configuration wheel in the left menu, next to the agent name), find the ``Client access token``.
-	3. Copy the ``Client access token`` and add it your ``config.yaml`` file (replacing the text ``<<DIALOGFLOW CLIENT ACCESS TOKEN>>``)
+	1. Log in to `DialogFlow <https://www.dialogflow.com>`_ and select ``Create Agent``. For CART, all tests have been done with the ES (simpler) version.
+	2. Follow the `instructions <https://cloud.google.com/dialogflow/es/docs/quick/setup>`_ from DialogFlow to enable the API, create a service account, and download the service key account file in JSON format. You will use it on step 5, as part of the web service configuration.
 
 
 
@@ -91,12 +90,15 @@ After completing the steps above, it is time to publish the agent as a web servi
 
 If using Heroku:
 	1. Log into your `Heroku <https://heroku.com>`_  account and create a new app
-	2. Select the deployment method
-	3. Deploy the app
-	4. After the build has been completed, select ``open app``
-	5. Copy the URL of the app (it should start with the app-name, and end with ``herokuapp.com``) to use in the next step
+	2. Set the environment variables (called in Heroku "config vars") for DialogFlow. See note 2, below, for details.
+	3. Select the deployment method
+	4. Deploy the app
+	5. After the build has been completed, select ``open app``
+	6. Copy the URL of the app (it should start with the app-name, and end with ``herokuapp.com``) to use in the next step
 
-**Note:** the URL of the app is needed so it can be registered in the MS Bot Framework (next step). The registration in the MS Bot Framework will also provide authentication credentials. These credentials will need to be added to the ``config.yaml`` file, and the agent will need to be published again in Heroku (as outlined in the next step).
+**Note 1:** the URL of the app is needed so it can be registered in the MS Bot Framework (next step). The registration in the MS Bot Framework will also provide authentication credentials. These credentials will need to be added to the ``config.yaml`` file, and the agent will need to be published again in Heroku (as outlined in the next step).
+
+**Note 2:** Open the service account file downloaded on step 3(above) locally in a text editor, remove all line breaks, and substitute the double quotes (") by single quotes ('). In the web service, add this as an environment variable called DF_CREDENTIALS. Create another environment variable called DF_LANGUAGE_CODE and set its value to the appropriate language (e.g., en).
 
 
 Step 6. Connect the agent to the MS Bot Framework
