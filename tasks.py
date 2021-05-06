@@ -13,6 +13,7 @@ except:
 # IMPORTING NECESSARY PACKAGES
 from microsoftbotframework import ReplyToActivity
 from helpers.db_class import DB
+from helpers.dialogflow_connector import detect_intent_texts
 import json
 import os.path
 import apiai
@@ -61,15 +62,14 @@ def echo_response(message):
 
         
         resp_speech = None
-        ai = apiai.ApiAI(cfg['other']['dialogflow_access_token'])
-        request = ai.text_request()
-        request.lang = 'en'  # optional, default value equal 'en'
-        request.session_id = conversationid_trunc
-        request.query = message['text']
 
-        respAPI = request.getresponse()
-        resp = respAPI.read().decode('utf-8')
-        resp = json.loads(resp)
+        resp_dialogflow = detect_intent_texts(conversationid_trunc, str(message['text']))
+
+        try:
+            # resp_speech = resp_dialogflow.query_result.fulfillment_text
+            resp_speech = resp_dialogflow['fulfillmentText']
+        except:
+            resp_speech = 'ERROR: ' + str(resp_dialogflow)
         
         
         if not resp_speech:
