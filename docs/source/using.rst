@@ -33,9 +33,10 @@ CART can assign participants automatically to experimental conditions, as outlin
 To assign participants to experimental conditions using CART, the researcher should edit the section ``experimental_design`` of the  ``config.yaml`` file in the following manner:
 
     1. Set ``assignment_manager`` to ``CART``
-    2. Select the ``assignment_method``. Two options can be used:
+    2. Select the ``assignment_method``. Three options can be used:
         a. ``random_balanced``, which tries to keep the number of participants per condition always equal, and randomly assigns a new participant to a condition when the number of participants per condition is the same. When the number of participants per condition is different, a new participant is assigned to the condition with the lowest number of participants.
         b. ``fully_random``, which randomly assigns the participant to a condition. As it is fully random, the conditions may be unbalanced if the sample size is low.
+        c. ``sequential``, which assigns the first participant to the first condition, and the next participant to the next available condition, sequentially. Especially for experiments with low sample sizes, this may be a simpler way to ensure balance between conditions. 
     3. In the ``conditions`` section, include as many conditions as needed, always using the structure shown in the ``config_template.yaml``, i.e., adding a new condition by having one indentation with condition_NUMBER, and another indentation with ``condition_name``, and then including the actual condition name (without spaces). The ``condition_name`` will be stored in the database (table: conversations), along with participant details.
 
 After the conditions are created, the researcher can customise the responses that the dialogue manager provides to the participant depending on the condition that the participant is in. For more details, see :ref:`customising_responses`. 

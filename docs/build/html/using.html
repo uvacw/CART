@@ -206,9 +206,10 @@
 <div><ol class="arabic simple">
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">assignment_manager</span></code> to <code class="docutils literal notranslate"><span class="pre">CART</span></code></p></li>
 <li><dl class="simple">
-<dt>Select the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code>. Two options can be used:</dt><dd><ol class="loweralpha simple">
+<dt>Select the <code class="docutils literal notranslate"><span class="pre">assignment_method</span></code>. Three options can be used:</dt><dd><ol class="loweralpha simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">random_balanced</span></code>, which tries to keep the number of participants per condition always equal, and randomly assigns a new participant to a condition when the number of participants per condition is the same. When the number of participants per condition is different, a new participant is assigned to the condition with the lowest number of participants.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fully_random</span></code>, which randomly assigns the participant to a condition. As it is fully random, the conditions may be unbalanced if the sample size is low.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sequential</span></code>, which assigns the first participant to the first condition, and the next participant to the next available condition, sequentially. Especially for experiments with low sample sizes, this may be a simpler way to ensure balance between conditions.</p></li>
 </ol>
 </dd>
 </dl>
