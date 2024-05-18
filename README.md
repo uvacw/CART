@@ -1,10 +1,13 @@
-# UPDATE
+# CART - Conversational Agent Research Toolkit [DEPRECATED]
 
-Given the retirement of the Microsoft Framework project, publishing the bot may be an issue in the coming weeks. We are looking into alternatives for another front-end. For now, our advice is to first look for a front-end (and adapt the code as needed) before going further.
+## Update
+Given changes in the underlying offering of services (e.g., Microsoft Bot Framework), CART may not be operational for new projects. This repository is being archived and the code can be reused by others as needed.
 
-# CART - Conversational Agent Research Toolkit
+## About the project
 
 The Conversational Agent Research Toolkit (CART) is aimed at enabling researchers to create conversational agents for experimental studies using computational methods. CART provides a unifying toolkit written in Python that integrates existing services and APIs for dialogue management, natural language understanding & generation, and frameworks that enable publishing the conversational agents as either a web interface or within messaging apps.
+
+
 
 
 ## Requirements
